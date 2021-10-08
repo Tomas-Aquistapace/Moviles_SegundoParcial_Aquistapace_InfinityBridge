@@ -30,7 +30,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2233474794567540664}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 8.5}
+  m_LocalPosition: {x: 0, y: 0, z: 65.75}
   m_LocalScale: {x: 4.4116983, y: 6.1345577, z: 4.5}
   m_Children:
   - {fileID: 8480237537364371476}
@@ -125,7 +125,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2b618a41d0dbcb4d9ab05768d2619db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speedMovement: 2
+  initialPiece: 0
+  deactivatePosZ: -65.75
+  speedMovement: 1.5
 --- !u!114 &2233474794567540663
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,8 +152,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8480237537364371476}
   - component: {fileID: 8480237537364371475}
+  - component: {fileID: 5188548965144087986}
   m_Layer: 9
-  m_Name: Cube
+  m_Name: Bridge Pos
   m_TagString: BridgePos
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -184,3 +187,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &5188548965144087986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8480237537364371477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d2d8bb75a77b0a45b70ced96c6a6efb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 1
+  color: {r: 0, g: 0, b: 1, a: 1}
