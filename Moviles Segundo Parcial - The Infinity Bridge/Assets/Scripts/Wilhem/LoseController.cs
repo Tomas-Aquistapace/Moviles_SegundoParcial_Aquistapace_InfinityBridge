@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class FallController : MonoBehaviour
+public class LoseController : MonoBehaviour
 {
     [SerializeField] float distanceRay = 1f;
     [SerializeField] Vector3 rayPos;
@@ -10,23 +10,13 @@ public class FallController : MonoBehaviour
 
     // =======================
 
-    private PlayerState playerSate;
+    private PlayerState playerState;
 
     // =======================
 
     private void Awake()
     {
-        playerSate = GetComponent<PlayerState>();
-    }
-
-    private void OnEnable()
-    {
-        PlayerState.LoseGame += LoseAction;
-    }
-
-    private void OnDisable()
-    {
-        PlayerState.LoseGame -= LoseAction;
+        playerState = GetComponent<PlayerState>();
     }
 
     private void Update()
@@ -36,20 +26,27 @@ public class FallController : MonoBehaviour
 
     // =======================
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.transform.tag == "DangerZone")
+        {
+            LoseAction();
+        }
+    }
+
     void FloorDistance()
     {
         RaycastHit hit;
         if (Physics.Raycast(transform.position - rayPos, Vector3.down - rayPos, out hit, distanceRay, layerMask) == false)
         {
-            playerSate.SetState(PlayerState.State.Lose);
             LoseAction();
-            anim.SetTrigger("Fall");
         }
     }
 
-    public void LoseAction()
+    void LoseAction()
     {
-
+        playerState.SetState(PlayerState.State.Lose);
+        anim.SetTrigger("Fall");
     }
 
     // =======================

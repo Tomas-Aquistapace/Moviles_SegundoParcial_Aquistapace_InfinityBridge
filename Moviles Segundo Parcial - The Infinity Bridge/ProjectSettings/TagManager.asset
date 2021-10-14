@@ -6,6 +6,7 @@ TagManager:
   tags:
   - BridgePos
   - Initial
+  - DangerZone
   layers:
   - Default
   - TransparentFX
