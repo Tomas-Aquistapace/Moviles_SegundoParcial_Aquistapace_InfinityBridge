@@ -603,7 +603,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialPiece: 1
   deactivatePosZ: -80
-  speedMovement: 1.5
+  speedMovement: 1.25
 --- !u!1 &7711852770154059941
 GameObject:
   m_ObjectHideFlags: 0

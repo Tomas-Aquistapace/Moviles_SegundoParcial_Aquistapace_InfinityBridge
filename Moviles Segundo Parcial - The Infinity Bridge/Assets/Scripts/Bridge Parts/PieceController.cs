@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class GrabAndDrop : MonoBehaviour
+public class PieceController : MonoBehaviour
 {
     public enum State
     {
@@ -25,6 +25,8 @@ public class GrabAndDrop : MonoBehaviour
         {
             mZCoord = Camera.main.WorldToScreenPoint(gameObject.transform.position).z;
             mOffset = gameObject.transform.position - GetMouseWorldPos();
+
+            PointerManager.SetObjSelected(this.gameObject);
 
             bridgeState = State.Moving;
         }
@@ -56,8 +58,7 @@ public class GrabAndDrop : MonoBehaviour
     // =======================
 
     private void OnTriggerStay(Collider other)
-    {
-        
+    {        
         if(other.transform.tag == "BridgePos" && bridgeState == State.Avaible)
         {
             transform.position = other.transform.position;
@@ -67,8 +68,16 @@ public class GrabAndDrop : MonoBehaviour
             other.GetComponent<BoxCollider>().enabled = false;
             bridgePosColl.enabled = true;
         }
-
     }
 
+    public void ResetState(Vector3 newPos)
+    {
+        bridgeState = State.Avaible;
+
+        Vector3 newRotation = new Vector3(0, Random.Range(0, 360), 0);        
+        this.transform.rotation = Quaternion.Euler(newRotation);
+
+        this.transform.position = newPos;
+    }
 
 }

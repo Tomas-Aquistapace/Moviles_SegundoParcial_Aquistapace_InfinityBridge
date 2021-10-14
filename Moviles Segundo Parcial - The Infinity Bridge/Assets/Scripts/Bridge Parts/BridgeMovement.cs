@@ -6,8 +6,8 @@ public class BridgeMovement : MonoBehaviour
     [SerializeField] bool initialPiece = false;
     [SerializeField] float deactivatePosZ = 0;
     
-    [Header("Normal Piece")]
-    [SerializeField] float speedMovement = 3f;
+    //[Header("Normal Piece")]
+    //[SerializeField] float speedMovement = 3f;
 
     private void Update()
     {
@@ -16,7 +16,7 @@ public class BridgeMovement : MonoBehaviour
 
     void MoveBridge()
     {
-        Vector3 newDirection = -Vector3.forward * Time.deltaTime * speedMovement;
+        Vector3 newDirection = -Vector3.forward * Time.deltaTime * GameManager.GetSpeed();//speedMovement;
         this.transform.position += newDirection;
 
         if(initialPiece && this.transform.position.z < deactivatePosZ)

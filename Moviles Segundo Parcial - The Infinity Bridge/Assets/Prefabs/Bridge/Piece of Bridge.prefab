@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2233474794567540670}
   - component: {fileID: 2233474794567540667}
   - component: {fileID: 2233474794567540671}
-  - component: {fileID: 2233474794567540663}
+  - component: {fileID: 8222859242616504943}
   m_Layer: 8
   m_Name: Piece of Bridge
   m_TagString: Untagged
@@ -127,8 +127,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   initialPiece: 0
   deactivatePosZ: -65.75
-  speedMovement: 1.5
---- !u!114 &2233474794567540663
+  speedMovement: 1.25
+--- !u!114 &8222859242616504943
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -137,7 +137,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2233474794567540664}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f1452d287c1293469d8ffa4f2716b3d, type: 3}
+  m_Script: {fileID: 11500000, guid: 6de6cdac0b414584592071a3500517e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   bridgeState: 0

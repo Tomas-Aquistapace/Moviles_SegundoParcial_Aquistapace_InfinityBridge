@@ -10,7 +10,6 @@ public class BridgePooler : MonoBehaviourSingleton<BridgePooler>
     [SerializeField] float maxTimeToRespawn = 7f;
     [SerializeField] private float timeToRespawn = 0f;
 
-
     [Header("Bridge")]
     [SerializeField] GameObject prefBridge;
     [SerializeField] int numberOfBridgePieces = 15;
@@ -37,6 +36,8 @@ public class BridgePooler : MonoBehaviourSingleton<BridgePooler>
         {
             GameObject go = Instantiate(prefBridge);
             go.transform.parent = this.transform;
+
+            go.transform.name = prefBridge.name + "_" + i;
 
             go.SetActive(false);
 
@@ -83,7 +84,11 @@ public class BridgePooler : MonoBehaviourSingleton<BridgePooler>
     {
         GameObject piece;
         piece = bridgeQueue.Dequeue();
-        piece.transform.position = spawner.position;
+
+        float rand = Random.Range(-spawner.localScale.x / 2, spawner.localScale.x / 2);
+        Vector3 newPos = new Vector3(rand, spawner.position.y, spawner.position.z);
+
+        piece.transform.GetComponent<PieceController>().ResetState(newPos);
 
         switch (spawnerState)
         {

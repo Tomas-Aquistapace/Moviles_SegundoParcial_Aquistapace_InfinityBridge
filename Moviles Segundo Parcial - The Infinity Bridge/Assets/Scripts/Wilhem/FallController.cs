@@ -18,10 +18,22 @@ public class FallController : MonoBehaviour
         playerSate = GetComponent<PlayerState>();
     }
 
+    private void OnEnable()
+    {
+        PlayerState.LoseGame += LoseAction;
+    }
+
+    private void OnDisable()
+    {
+        PlayerState.LoseGame -= LoseAction;
+    }
+
     private void Update()
     {
         FloorDistance();
     }
+
+    // =======================
 
     void FloorDistance()
     {
@@ -29,8 +41,14 @@ public class FallController : MonoBehaviour
         if (Physics.Raycast(transform.position, Vector3.down, out hit, distanceRay, layerMask) == false)
         {
             playerSate.SetState(PlayerState.State.Lose);
+            LoseAction();
             anim.SetTrigger("Fall");
         }
+    }
+
+    public void LoseAction()
+    {
+
     }
 
     // =======================
