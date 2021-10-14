@@ -3,6 +3,7 @@
 public class FallController : MonoBehaviour
 {
     [SerializeField] float distanceRay = 1f;
+    [SerializeField] Vector3 rayPos;
     [SerializeField] LayerMask layerMask;
 
     [SerializeField] Animator anim;
@@ -38,7 +39,7 @@ public class FallController : MonoBehaviour
     void FloorDistance()
     {
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, Vector3.down, out hit, distanceRay, layerMask) == false)
+        if (Physics.Raycast(transform.position - rayPos, Vector3.down - rayPos, out hit, distanceRay, layerMask) == false)
         {
             playerSate.SetState(PlayerState.State.Lose);
             LoseAction();
@@ -57,7 +58,7 @@ public class FallController : MonoBehaviour
     {
         Gizmos.color = Color.blue;
 
-        Gizmos.DrawLine(transform.position, new Vector3(transform.position.x, transform.position.y - distanceRay, transform.position.z));
+        Gizmos.DrawLine(transform.position - rayPos, new Vector3(transform.position.x, transform.position.y - distanceRay, transform.position.z) - rayPos);
     }
 
 }

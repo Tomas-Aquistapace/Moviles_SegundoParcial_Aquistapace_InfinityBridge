@@ -10,7 +10,8 @@ public class PieceController : MonoBehaviour
     };
     public State bridgeState = State.Avaible;
 
-    public BoxCollider bridgePosColl;
+    [SerializeField] BoxCollider bridgePosColl;
+    [SerializeField] GameObject body;
 
     // =======================
     
@@ -26,7 +27,7 @@ public class PieceController : MonoBehaviour
             mZCoord = Camera.main.WorldToScreenPoint(gameObject.transform.position).z;
             mOffset = gameObject.transform.position - GetMouseWorldPos();
 
-            PointerManager.SetObjSelected(this.gameObject);
+            PointerManager.SetObjSelected(body);
 
             bridgeState = State.Moving;
         }
@@ -74,10 +75,9 @@ public class PieceController : MonoBehaviour
     {
         bridgeState = State.Avaible;
 
-        Vector3 newRotation = new Vector3(0, Random.Range(0, 360), 0);        
-        this.transform.rotation = Quaternion.Euler(newRotation);
+        Vector3 newRotation = new Vector3(0, Random.Range(0, 360), 0);
+        body.transform.rotation = Quaternion.Euler(newRotation);
 
         this.transform.position = newPos;
     }
-
 }

@@ -13,7 +13,8 @@ public class InputRotation : MonoBehaviour
 
     void PlayerInput()
     {
-        if(Input.mouseScrollDelta.y != 0 && PointerManager.GetObjSelected() != null)
+#if UNITY_EDITOR
+        if (Input.mouseScrollDelta.y != 0 && PointerManager.GetObjSelected() != null)
         {
             Vector3 rotation = PointerManager.GetObjSelected().transform.rotation.eulerAngles;
 
@@ -21,5 +22,10 @@ public class InputRotation : MonoBehaviour
             
             PointerManager.GetObjSelected().transform.rotation = Quaternion.Euler(rotation);
         }
+#elif UNITY_ANDROID || UNITY_IOS
+
+#else
+
+#endif
     }
 }

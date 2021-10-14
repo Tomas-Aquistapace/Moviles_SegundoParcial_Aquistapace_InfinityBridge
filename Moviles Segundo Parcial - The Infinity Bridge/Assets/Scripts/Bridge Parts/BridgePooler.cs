@@ -20,7 +20,8 @@ public class BridgePooler : MonoBehaviourSingleton<BridgePooler>
     private enum SpawnerState
     {
         Initializing,
-        Updating
+        Updating,
+        Stop
     };
     private SpawnerState spawnerState = SpawnerState.Initializing;
 
@@ -47,17 +48,30 @@ public class BridgePooler : MonoBehaviourSingleton<BridgePooler>
         timeToRespawn = Random.Range(minTimeToRespawn, maxTimeToRespawn);
     }
 
+    private void OnEnable()
+    {
+        PlayerState.LoseGame += StopBridgePooler;
+    }
+
+    private void OnDisable()
+    {
+        PlayerState.LoseGame -= StopBridgePooler;        
+    }
+
     private void Update()
     {
-        time += Time.deltaTime;
-
-        if(time >= timeToRespawn)
+        if(spawnerState != SpawnerState.Stop)
         {
-            RespawnPiece();
+            time += Time.deltaTime;
 
-            timeToRespawn = Random.Range(minTimeToRespawn, maxTimeToRespawn);
+            if(time >= timeToRespawn)
+            {
+                RespawnPiece();
 
-            time = 0f;
+                timeToRespawn = Random.Range(minTimeToRespawn, maxTimeToRespawn);
+
+                time = 0f;
+            }
         }
     }
 
@@ -105,6 +119,11 @@ public class BridgePooler : MonoBehaviourSingleton<BridgePooler>
                 
                 break;
         }
+    }
+
+    public void StopBridgePooler()
+    {
+        spawnerState = SpawnerState.Stop;
     }
 
 }
