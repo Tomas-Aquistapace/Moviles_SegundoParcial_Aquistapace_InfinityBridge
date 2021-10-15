@@ -5,7 +5,7 @@ public class UI_MenuManager : MonoBehaviour
 {
     public void GoToSceneLoading(string scene)
     {
-        //ScenesLoaderHandler.LoadScene(scene);
+        ScenesLoaderHandler.LoadScene(scene);
     }
 
     public void RestartScene()

@@ -5,9 +5,6 @@ public class BridgeMovement : MonoBehaviour
     [Header("Initial Piece")]
     [SerializeField] bool initialPiece = false;
     [SerializeField] float deactivatePosZ = 0;
-    
-    //[Header("Normal Piece")]
-    //[SerializeField] float speedMovement = 3f;
 
     private void Update()
     {

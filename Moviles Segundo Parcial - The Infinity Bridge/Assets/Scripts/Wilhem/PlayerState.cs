@@ -4,6 +4,7 @@ using System;
 public class PlayerState : MonoBehaviour
 {
     public static Action LoseGame;
+    public static Action<int> EarnPoint;
 
     public enum State
     {
@@ -12,6 +13,8 @@ public class PlayerState : MonoBehaviour
     };
     [SerializeField] private State state;
     
+    public static int points = 0;
+
     // ============================
 
     public State GetState()
@@ -27,5 +30,12 @@ public class PlayerState : MonoBehaviour
         {
             LoseGame?.Invoke();
         }
+    }
+
+    public void WinPoints()
+    {
+        points++;
+
+        EarnPoint?.Invoke(points);
     }
 }

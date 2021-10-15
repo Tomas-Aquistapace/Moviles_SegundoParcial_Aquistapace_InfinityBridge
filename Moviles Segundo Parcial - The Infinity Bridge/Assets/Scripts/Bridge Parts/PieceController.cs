@@ -10,7 +10,7 @@ public class PieceController : MonoBehaviour
     };
     public State bridgeState = State.Avaible;
 
-    [SerializeField] BoxCollider bridgePosColl;
+    [SerializeField] GameObject constructionZone;
     [SerializeField] GameObject body;
 
     // =======================
@@ -19,6 +19,11 @@ public class PieceController : MonoBehaviour
     private float mZCoord;
 
     // =======================
+
+    private void Start()
+    {
+        constructionZone.SetActive(false);
+    }
 
     private void OnMouseDown()
     {
@@ -66,8 +71,8 @@ public class PieceController : MonoBehaviour
 
             bridgeState = State.Locked;
 
-            other.GetComponent<BoxCollider>().enabled = false;
-            bridgePosColl.enabled = true;
+            other.GetComponent<Transform>().gameObject.SetActive(false);
+            constructionZone.SetActive(true);
         }
     }
 

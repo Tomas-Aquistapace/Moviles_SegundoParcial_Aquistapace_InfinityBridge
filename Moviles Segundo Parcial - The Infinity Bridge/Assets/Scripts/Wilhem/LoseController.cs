@@ -12,6 +12,8 @@ public class LoseController : MonoBehaviour
 
     private PlayerState playerState;
 
+    private Transform pieceTrans = null; // Used for the points
+
     // =======================
 
     private void Awake()
@@ -40,6 +42,15 @@ public class LoseController : MonoBehaviour
         if (Physics.Raycast(transform.position - rayPos, Vector3.down - rayPos, out hit, distanceRay, layerMask) == false)
         {
             LoseAction();
+        }
+        else if(hit.transform.tag == "BridgePiece")
+        {
+            if(pieceTrans != hit.transform)
+            {
+                pieceTrans = hit.transform;
+
+                playerState.WinPoints();
+            }
         }
     }
 
