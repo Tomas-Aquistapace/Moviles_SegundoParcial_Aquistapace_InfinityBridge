@@ -4,6 +4,7 @@ using System;
 public class PlayerState : MonoBehaviour
 {
     public static Action LoseGame;
+    public static Action<int> LoseLives;
     public static Action<int> EarnPoint;
 
     public enum State
@@ -32,6 +33,11 @@ public class PlayerState : MonoBehaviour
 
             SetNewMaxScore();
         }
+    }
+
+    public void UpdateLives(int lives)
+    {
+        LoseLives?.Invoke(lives);
     }
 
     public void WinPoints()

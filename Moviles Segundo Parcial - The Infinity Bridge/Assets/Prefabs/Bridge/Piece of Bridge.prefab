@@ -537,7 +537,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialPiece: 0
-  deactivatePosZ: -65.75
+  deactivatePosZ: 0
 --- !u!114 &8222859242616504943
 MonoBehaviour:
   m_ObjectHideFlags: 0

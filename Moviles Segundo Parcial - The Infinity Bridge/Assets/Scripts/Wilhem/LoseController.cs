@@ -8,6 +8,10 @@ public class LoseController : MonoBehaviour
 
     [SerializeField] Animator anim;
 
+    public int lives = 3;
+
+    public bool ableToReceive = true;
+    
     // =======================
 
     private PlayerState playerState;
@@ -21,6 +25,11 @@ public class LoseController : MonoBehaviour
         playerState = GetComponent<PlayerState>();
     }
 
+    private void Start()
+    {
+        playerState.UpdateLives(lives);
+    }
+
     private void Update()
     {
         FloorDistance();
@@ -32,7 +41,24 @@ public class LoseController : MonoBehaviour
     {
         if(other.transform.tag == "DangerZone")
         {
-            LoseAction();
+            if (ableToReceive)
+            {
+                lives--;
+
+                ableToReceive = false;
+
+                playerState.UpdateLives(lives);
+
+                if (lives <= 0)
+                {
+                    playerState.SetState(PlayerState.State.Lose);
+                    anim.SetTrigger("TripOn");
+                }
+                else
+                {
+                    anim.SetTrigger("TakeDamage");
+                }
+            }
         }
     }
 
@@ -58,6 +84,11 @@ public class LoseController : MonoBehaviour
     {
         playerState.SetState(PlayerState.State.Lose);
         anim.SetTrigger("Fall");
+    }
+
+    public void AbleToReceiveDamage()
+    {
+        ableToReceive = true;
     }
 
     // =======================

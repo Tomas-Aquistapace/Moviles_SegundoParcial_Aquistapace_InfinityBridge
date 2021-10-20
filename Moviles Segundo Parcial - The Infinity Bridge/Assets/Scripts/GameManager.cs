@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] float bridgeSpeed = 1.5f;
+    [SerializeField] float bridgeLockedSpeed = 1.2f;
+    [SerializeField] float bridgeReleaseSpeed = 1.5f;
 
-    public static float speed = 1.5f;
+    public static float lockedSpeed = 1.2f;
+    public static float releaseSpeed = 1.5f;
 
     // ===========================
 
     private void Awake()
     {
-        speed = bridgeSpeed;
+        releaseSpeed = bridgeReleaseSpeed;
+        lockedSpeed = bridgeLockedSpeed;
     }
 
     private void OnEnable()
@@ -25,13 +28,19 @@ public class GameManager : MonoBehaviour
         PlayerState.LoseGame -= StopSpeed;
     }
 
-    public static float GetSpeed()
+    public static float GetReleaseSpeed()
     {
-        return speed;
+        return releaseSpeed;
+    }
+    
+    public static float GetLockedSpeed()
+    {
+        return lockedSpeed;
     }
 
     public void StopSpeed()
     {
-        speed = 0f;
+        releaseSpeed = 0f;
+        lockedSpeed = 0f;
     }
 }
