@@ -7,6 +7,6 @@ public class UI_CurrentRecord : MonoBehaviour
 
     private void Start()
     {
-        currentRecord.text = AllPlayerData.GetActualRecord().ToString();
+        currentRecord.text = LoadData.GetActualRecord().ToString();
     }
 }

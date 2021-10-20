@@ -80,7 +80,7 @@ public class PieceController : MonoBehaviour
     {
         bridgeState = State.Avaible;
 
-        Vector3 newRotation = new Vector3(0, Random.Range(0, 360), 0);
+        Vector3 newRotation = new Vector3(0, Random.Range(0, 360), Random.Range(0, 360));
         body.transform.rotation = Quaternion.Euler(newRotation);
 
         this.transform.position = newPos;
