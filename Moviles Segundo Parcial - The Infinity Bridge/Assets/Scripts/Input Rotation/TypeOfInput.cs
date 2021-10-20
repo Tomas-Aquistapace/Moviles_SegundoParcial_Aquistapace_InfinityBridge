@@ -32,26 +32,14 @@ public class MobileInput : TypeOfInput
 
     public override void UpdateInput()
     {
-        var fingerCount = 0;
-        foreach (Touch touch in Input.touches)
+        if (Input.touchCount == 2)
         {
-            if (touch.phase == TouchPhase.Moved)
-            {
-                fingerCount++;
-            }
-        }
-
-        if (fingerCount == 2)
-        {
-
             Touch touch = Input.GetTouch(1);
 
-            RotateObject(new Vector3(0, 0, touch.deltaPosition.x * scale));
-
-        }
-        else if (fingerCount >= 3)
-        {
-
+            if (touch.phase == TouchPhase.Moved)
+            {
+                RotateObject(new Vector3(0, touch.deltaPosition.y * Time.deltaTime * scale, touch.deltaPosition.x * Time.deltaTime * scale));
+            }
         }
     }
 }

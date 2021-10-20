@@ -11,7 +11,7 @@ public class InputManager : MonoBehaviour
 #if UNITY_EDITOR || UNITY_STANDALONE
         input = new PcInput(scale);
 #elif UNITY_ANDROID || UNITY_IOS
-        input = new MobileInput(scale);        
+        input = new MobileInput(scale);
 #endif
     }
 
