@@ -13,7 +13,7 @@ public class PlayerState : MonoBehaviour
     };
     [SerializeField] private State state;
     
-    public static int points = 0;
+    public int points = 0;
 
     // ============================
 
@@ -29,6 +29,8 @@ public class PlayerState : MonoBehaviour
         if (state == State.Lose)
         {
             LoseGame?.Invoke();
+
+            SetNewMaxScore();
         }
     }
 
@@ -37,5 +39,16 @@ public class PlayerState : MonoBehaviour
         points++;
 
         EarnPoint?.Invoke(points);
+    }
+
+    void SetNewMaxScore()
+    {
+        PlayerData data = SaveSystem.LoadPlayer();
+        int oldPoints = data.points;
+
+        if (oldPoints < points)
+        {
+            SaveSystem.SaveData(this);
+        }
     }
 }
