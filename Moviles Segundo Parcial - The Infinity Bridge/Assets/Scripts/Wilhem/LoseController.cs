@@ -25,11 +25,6 @@ public class LoseController : MonoBehaviour
         playerState = GetComponent<PlayerState>();
     }
 
-    private void Start()
-    {
-        playerState.UpdateLives(lives);
-    }
-
     private void Update()
     {
         FloorDistance();

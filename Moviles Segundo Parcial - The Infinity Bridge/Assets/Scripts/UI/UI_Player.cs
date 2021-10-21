@@ -1,14 +1,20 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
-public class UI_Points : MonoBehaviour
+public class UI_Player : MonoBehaviour
 {    
     [SerializeField] TextMeshProUGUI pointsText;
-    [SerializeField] TextMeshProUGUI livesText;
+
+    [SerializeField] Image healthBar;
+    [SerializeField] LoseController player;
+
+    [SerializeField] float health = 0;
 
     private void Start()
     {
         pointsText.text = "0";
+        health = 1 / (float)player.lives;
     }
 
     private void OnEnable()
@@ -30,7 +36,6 @@ public class UI_Points : MonoBehaviour
 
     void UpgradeLives(int num)
     {
-        livesText.text = num.ToString();
+        healthBar.fillAmount = health * num;
     }
-
 }

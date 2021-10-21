@@ -32,10 +32,10 @@ public class PieceController : MonoBehaviour
             mZCoord = Camera.main.WorldToScreenPoint(gameObject.transform.position).z;
             mOffset = gameObject.transform.position - GetMouseWorldPos();
 
-            PointerManager.SetObjSelected(body);
-
             bridgeState = State.Moving;
         }
+
+        PointerManager.SetObjSelected(body);
     }
 
     private Vector3 GetMouseWorldPos()

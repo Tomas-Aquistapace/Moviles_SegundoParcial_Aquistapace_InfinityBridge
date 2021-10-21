@@ -3,8 +3,9 @@ using TMPro;
 
 public class UI_LoseManager : MonoBehaviour
 {
+    [SerializeField] GameObject[] disableUI_Items;
+
     [SerializeField] GameObject loseScreen;
-    [SerializeField] GameObject pauseButton;
 
     [SerializeField] TextMeshProUGUI maxPoints;
     [SerializeField] TextMeshProUGUI newPoints;
@@ -23,8 +24,12 @@ public class UI_LoseManager : MonoBehaviour
 
     void EnableDeathBox()
     {
+        foreach (GameObject item in disableUI_Items)
+        {
+            item.SetActive(false);
+        }
+
         loseScreen.SetActive(true);
-        pauseButton.SetActive(false);
 
         maxPoints.text = GetActualRecord().ToString();
         newPoints.text = player.points.ToString();

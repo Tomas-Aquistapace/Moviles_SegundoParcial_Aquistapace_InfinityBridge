@@ -1,18 +1,17 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 public class BridgePooler : MonoBehaviourSingleton<BridgePooler>
 {
     [Header("Spawner")]
-    [SerializeField] Transform spawner;
-    [SerializeField] float minTimeToRespawn = 5f;
-    [SerializeField] float maxTimeToRespawn = 7f;
+    [SerializeField] private Transform spawner;
+    [SerializeField] private float minTimeToRespawn = 5f;
+    [SerializeField] private float maxTimeToRespawn = 7f;
     [SerializeField] private float timeToRespawn = 0f;
 
     [Header("Bridge")]
-    [SerializeField] GameObject prefBridge;
     [SerializeField] int numberOfBridgePieces = 15;
+    private GameObject prefBridge;
 
     private Queue<GameObject> bridgeQueue;
     private float time = 0f;
@@ -30,6 +29,9 @@ public class BridgePooler : MonoBehaviourSingleton<BridgePooler>
     public override void Awake()
     {
         base.Awake();
+
+        Object pref = Resources.Load("Bridge/Piece_of_Bridge", typeof(GameObject));
+        prefBridge = (GameObject)pref;
 
         bridgeQueue = new Queue<GameObject>();
 
@@ -125,5 +127,4 @@ public class BridgePooler : MonoBehaviourSingleton<BridgePooler>
     {
         spawnerState = SpawnerState.Stop;
     }
-
 }
