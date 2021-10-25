@@ -15,7 +15,7 @@ public abstract class TypeOfInput
     {
         Vector3 rotation = PointerManager.GetObjSelected().transform.rotation.eulerAngles;
         rotation += angle;
-        PointerManager.GetObjSelected().transform.rotation = Quaternion.Euler(rotation);
+        PointerManager.GetObjSelected().GetComponent<PieceController>().RotateObject(rotation);
     }
 }
 
@@ -32,13 +32,24 @@ public class MobileInput : TypeOfInput
 
     public override void UpdateInput()
     {
-        if (Input.touchCount == 2)
-        {
-            Touch touch = Input.GetTouch(1);
+        //if (Input.touchCount == 2)
+        //{
+        //    Touch touch = Input.GetTouch(1);
+        //
+        //    if (touch.phase == TouchPhase.Moved)
+        //    {
+        //        RotateObject(new Vector3(0, touch.deltaPosition.y * scale, touch.deltaPosition.x * scale));
+        //    }
+        //}
 
-            if (touch.phase == TouchPhase.Moved)
+        for (var i = 0; i < Input.touchCount; ++i)
+        {
+            if (Input.GetTouch(i).phase == TouchPhase.Began)
             {
-                RotateObject(new Vector3(0, touch.deltaPosition.y * Time.deltaTime * scale, touch.deltaPosition.x * Time.deltaTime * scale));
+                if (Input.GetTouch(i).tapCount == 2)
+                {
+                    RotateObject(new Vector3(0, scale, 0));
+                }
             }
         }
     }
@@ -53,13 +64,19 @@ public class PcInput : TypeOfInput
 
     public override void UpdateInput()
     {
-        if (Input.GetMouseButton(1) && Input.mouseScrollDelta.y != 0 && PointerManager.GetObjSelected() != null)
+
+        if (Input.GetMouseButtonDown(1) && PointerManager.GetObjSelected() != null)
         {
-            RotateObject(new Vector3(0, 0, Input.mouseScrollDelta.y * scale));
+            RotateObject(new Vector3(0, scale, 0));
         }
-        else if (Input.mouseScrollDelta.y != 0 && PointerManager.GetObjSelected() != null)
-        {
-            RotateObject(new Vector3(0, Input.mouseScrollDelta.y * scale, 0));
-        }
+
+        //if (Input.GetMouseButton(1) && Input.mouseScrollDelta.y != 0 && PointerManager.GetObjSelected() != null)
+        //{
+        //    RotateObject(new Vector3(0, 0, Input.mouseScrollDelta.y * scale));
+        //}
+        //else if (Input.mouseScrollDelta.y != 0 && PointerManager.GetObjSelected() != null)
+        //{
+        //    RotateObject(new Vector3(0, Input.mouseScrollDelta.y * scale, 0));
+        //}
     }
 }

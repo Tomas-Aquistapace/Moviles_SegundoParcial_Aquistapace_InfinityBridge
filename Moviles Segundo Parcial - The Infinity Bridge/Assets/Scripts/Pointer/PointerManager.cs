@@ -8,7 +8,7 @@ public class PointerManager : MonoBehaviour
     private static Vector3 offsetArrow;
     private static GameObject arrowDown;
 
-    [SerializeField] static GameObject selected;
+    [SerializeField] static Transform selected;
 
     private void Awake()
     {
@@ -18,12 +18,12 @@ public class PointerManager : MonoBehaviour
         arrowDown = arrowDownVar;
     }
 
-    public static GameObject GetObjSelected()
+    public static Transform GetObjSelected()
     {
         return selected;
     }
 
-    public static void SetObjSelected(GameObject obj)
+    public static void SetObjSelected(Transform obj)
     {
         selected = obj;
     }
@@ -31,6 +31,6 @@ public class PointerManager : MonoBehaviour
     private void Update()
     {
         if(selected)
-            arrowDown.transform.position = selected.transform.position + offsetArrow;
+            arrowDown.transform.position = selected.position + offsetArrow;
     }
 }

@@ -12,7 +12,7 @@ public class UI_LoadingTutorial : MonoBehaviour
     [SerializeField] private Sprite[] mouseImg;
 
     [Header("Texts: ")]
-    [SerializeField] TextMeshProUGUI moveTutorial;    
+    [SerializeField] TextMeshProUGUI moveTutorial;
     [SerializeField] TextMeshProUGUI rotateTutorial;
 
     [SerializeField] [TextArea] private string mobileMoveText;

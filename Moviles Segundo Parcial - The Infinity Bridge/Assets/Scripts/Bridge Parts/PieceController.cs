@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class PieceController : MonoBehaviour
 {
@@ -10,19 +11,29 @@ public class PieceController : MonoBehaviour
     };
     public State bridgeState = State.Avaible;
 
-    [SerializeField] GameObject constructionZone;
-    [SerializeField] GameObject body;
+    [SerializeField] private GameObject constructionZone;
+    [SerializeField] private GameObject body;
+
+    [SerializeField] private float rotationSpeed = 5f;
+
+    [SerializeField] private GameObject[] obstacles;
+
+    private int lastObstacle = -1;
 
     // =======================
     
     private Vector3 mOffset;
     private float mZCoord;
 
+    private bool ableToRotate = true;
+
     // =======================
 
     private void Start()
     {
         constructionZone.SetActive(false);
+
+        ableToRotate = true;
     }
 
     private void OnMouseDown()
@@ -35,7 +46,7 @@ public class PieceController : MonoBehaviour
             bridgeState = State.Moving;
         }
 
-        PointerManager.SetObjSelected(body);
+        PointerManager.SetObjSelected(this.transform);
     }
 
     private Vector3 GetMouseWorldPos()
@@ -78,11 +89,58 @@ public class PieceController : MonoBehaviour
 
     public void ResetState(Vector3 newPos)
     {
+        SelectANewObstacle();
+
         bridgeState = State.Avaible;
 
-        Vector3 newRotation = new Vector3(0, Random.Range(0, 360), Random.Range(0, 360));
+        int posY = Random.Range(0, 4) * 90;
+        //int posZ = Random.Range(0, 4) * 90;
+        
+        Vector3 newRotation = new Vector3(0, posY, 0);
         body.transform.rotation = Quaternion.Euler(newRotation);
 
         this.transform.position = newPos;
+    }
+
+    public void RotateObject(Vector3 newPos)
+    {
+        if (ableToRotate)
+        {
+            StartCoroutine(RotationLerp(newPos));
+        }
+    }
+
+    // =======================
+
+    void SelectANewObstacle()
+    {
+        if (lastObstacle >= 0)
+            obstacles[lastObstacle].SetActive(false);
+
+        int num = Random.Range(0, obstacles.Length);
+
+        obstacles[num].SetActive(true);
+        lastObstacle = num;
+    }
+
+    IEnumerator RotationLerp(Vector3 newPos)
+    {
+        float time = 0f;
+
+        Quaternion from = body.transform.rotation;
+        Quaternion to = from * Quaternion.Euler(newPos);
+
+        ableToRotate = false;
+
+        while (time < 1)
+        {
+            time += rotationSpeed * Time.deltaTime;
+
+            body.transform.rotation = Quaternion.Slerp(from, to, time);
+            
+            yield return null;
+        }
+
+        ableToRotate = true;
     }
 }
