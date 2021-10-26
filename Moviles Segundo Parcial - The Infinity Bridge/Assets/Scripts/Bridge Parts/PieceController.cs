@@ -17,7 +17,6 @@ public class PieceController : MonoBehaviour
     [SerializeField] private float rotationSpeed = 5f;
 
     [SerializeField] private GameObject[] obstacles;
-
     private int lastObstacle = -1;
 
     // =======================
@@ -94,7 +93,6 @@ public class PieceController : MonoBehaviour
         bridgeState = State.Avaible;
 
         int posY = Random.Range(0, 4) * 90;
-        //int posZ = Random.Range(0, 4) * 90;
         
         Vector3 newRotation = new Vector3(0, posY, 0);
         body.transform.rotation = Quaternion.Euler(newRotation);
