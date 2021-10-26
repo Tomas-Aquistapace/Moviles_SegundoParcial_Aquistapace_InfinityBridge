@@ -35,16 +35,19 @@ public class MobileInput : TypeOfInput
 
     public override void UpdateInput()
     {
-        if (Input.GetTouch(0).phase == TouchPhase.Began)
+        if (Input.touchCount == 1)
         {
-            float timeSinceLastTap = Time.time - lastTapTime;
-
-            if (timeSinceLastTap <= DOUBLE_TAP_TIME)
+            if (Input.GetTouch(0).phase == TouchPhase.Began)
             {
-                RotateObject(new Vector3(0, scale, 0));
-            }
+                float timeSinceLastTap = Time.time - lastTapTime;
 
-            lastTapTime = Time.time;
+                if (timeSinceLastTap <= DOUBLE_TAP_TIME)
+                {
+                    RotateObject(new Vector3(0, scale, 0));
+                }
+
+                lastTapTime = Time.time;
+            }
         }
     }
 }

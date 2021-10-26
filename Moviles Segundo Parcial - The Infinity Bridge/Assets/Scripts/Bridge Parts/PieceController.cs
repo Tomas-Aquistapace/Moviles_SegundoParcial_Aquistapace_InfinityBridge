@@ -14,6 +14,8 @@ public class PieceController : MonoBehaviour
     [SerializeField] private GameObject constructionZone;
     [SerializeField] private GameObject body;
 
+    [SerializeField] private Animator animator;
+
     [SerializeField] private float rotationSpeed = 5f;
 
     [SerializeField] private GameObject[] obstacles;
@@ -25,6 +27,8 @@ public class PieceController : MonoBehaviour
     private float mZCoord;
 
     private bool ableToRotate = true;
+
+    private Transform constructionZoneRef;
 
     // =======================
 
@@ -43,6 +47,20 @@ public class PieceController : MonoBehaviour
             mOffset = gameObject.transform.position - GetMouseWorldPos();
 
             bridgeState = State.Moving;
+
+            animator.SetBool("Connected", true);
+        }
+        else if (bridgeState == State.Locked)
+        {
+            mZCoord = Camera.main.WorldToScreenPoint(gameObject.transform.position).z;
+            mOffset = gameObject.transform.position - GetMouseWorldPos();
+
+            bridgeState = State.Moving;
+
+            animator.SetBool("Connected", true);
+
+            constructionZoneRef.gameObject.SetActive(true);
+            constructionZone.SetActive(false);
         }
 
         PointerManager.SetObjSelected(this.transform);
@@ -68,7 +86,10 @@ public class PieceController : MonoBehaviour
     private void OnMouseUp()
     {
         if(bridgeState == State.Moving)
+        {
             bridgeState = State.Avaible;
+            animator.SetBool("Connected", false);
+        }
     }
 
     // =======================
@@ -83,6 +104,10 @@ public class PieceController : MonoBehaviour
 
             other.GetComponent<Transform>().gameObject.SetActive(false);
             constructionZone.SetActive(true);
+
+            constructionZoneRef = other.GetComponent<Transform>();
+
+            animator.SetBool("Connected", true);
         }
     }
 

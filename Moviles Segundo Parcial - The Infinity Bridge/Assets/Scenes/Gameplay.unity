@@ -1767,7 +1767,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawner: {fileID: 1670087494}
-  minTimeToRespawn: 2
+  minTimeToRespawn: 1.5
   maxTimeToRespawn: 3
   timeToRespawn: 0
   numberOfBridgePieces: 15
