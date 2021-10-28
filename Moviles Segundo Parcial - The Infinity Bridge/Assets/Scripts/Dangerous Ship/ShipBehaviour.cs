@@ -14,6 +14,14 @@ public class ShipBehaviour : MonoBehaviour
         coll = GetComponent<Collider>();
     }
 
+    private void OnEnable()
+    {
+        animator.SetBool("Sink", false);
+
+        isAlive = true;
+        coll.enabled = isAlive;
+    }
+
     private void Update()
     {
         MoveShip();
@@ -37,16 +45,15 @@ public class ShipBehaviour : MonoBehaviour
     {
         if(isAlive)
         {
-            animator.SetTrigger("Sink");
+            animator.SetBool("Sink", true);
 
             isAlive = false;
-
-            coll.enabled = false;
+            coll.enabled = isAlive;
         }
     }
 
     public void DestroyShip()
     {
-        Destroy(this.gameObject);
+        this.gameObject.SetActive(false);
     }
 }

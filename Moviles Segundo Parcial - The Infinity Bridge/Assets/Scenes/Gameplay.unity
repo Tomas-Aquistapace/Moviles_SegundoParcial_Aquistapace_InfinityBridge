@@ -1706,7 +1706,7 @@ MonoBehaviour:
   shipSpawner: {fileID: 1525226057}
   timeToStart: 6
   minTimeToRespawnShip: 4
-  maxTimeToRespawnShip: 6
+  maxTimeToRespawnShip: 5
   timeToRespawnShip: 0
   numberOfShipPieces: 5
 --- !u!1 &1074083827
@@ -1862,7 +1862,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0983fb90c885e4c4ea35929638e5f3a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bridgeLockedSpeed: 1.6
+  bridgeLockedSpeed: 1.8
   bridgeReleaseSpeed: 4
 --- !u!1 &1119006410
 GameObject:

@@ -125,11 +125,6 @@ public class BridgePooler : MonoBehaviourSingleton<BridgePooler>
         }
     }
 
-    public void RespawnShip()
-    {
-
-    }
-
     public void StopBridgePooler()
     {
         spawnerState = SpawnerState.Stop;
