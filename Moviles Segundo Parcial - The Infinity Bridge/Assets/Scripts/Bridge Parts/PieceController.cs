@@ -7,7 +7,8 @@ public class PieceController : MonoBehaviour
     {
         Avaible,
         Moving,
-        Locked
+        Locked,
+        Collapse
     };
     public State bridgeState = State.Avaible;
 
@@ -28,7 +29,7 @@ public class PieceController : MonoBehaviour
 
     private bool ableToRotate = true;
 
-    private Transform constructionZoneRef;
+    private GameObject constructionZoneRef;
 
     // =======================
 
@@ -59,7 +60,7 @@ public class PieceController : MonoBehaviour
 
             animator.SetBool("Connected", true);
 
-            constructionZoneRef.gameObject.SetActive(true);
+            constructionZoneRef.SetActive(true);
             constructionZone.SetActive(false);
         }
 
@@ -94,7 +95,31 @@ public class PieceController : MonoBehaviour
 
     // =======================
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other) // Si colisiono con un barco
+    {
+        if(other.transform.tag == "DangerousShip")
+        {
+            if(other.GetComponent<ShipBehaviour>())
+                other.GetComponent<ShipBehaviour>().DisableShip();
+
+            // ----
+
+            Collider col = GetComponent<Collider>();
+            col.enabled = false;
+
+            animator.SetTrigger("Collapse");
+            bridgeState = State.Collapse;
+
+            PointerManager.SetObjSelected(null);
+
+            if(constructionZoneRef)
+                constructionZoneRef.SetActive(true);
+
+            constructionZone.SetActive(false);
+        }
+    }
+
+    private void OnTriggerStay(Collider other) // Si colisiono con una zona de construccion
     {        
         if(other.transform.tag == "BridgePos" && bridgeState == State.Avaible)
         {
@@ -105,7 +130,8 @@ public class PieceController : MonoBehaviour
             other.GetComponent<Transform>().gameObject.SetActive(false);
             constructionZone.SetActive(true);
 
-            constructionZoneRef = other.GetComponent<Transform>();
+            constructionZoneRef = other.GetComponent<Transform>().gameObject;
+
 
             animator.SetBool("Connected", true);
         }

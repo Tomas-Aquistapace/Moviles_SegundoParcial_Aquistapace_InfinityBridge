@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4623928027941710258}
   - component: {fileID: 4623928027941710261}
   - component: {fileID: 9044856282231278612}
+  - component: {fileID: 72384894347259190}
   m_Layer: 9
   m_Name: ConstructionZone
   m_TagString: BridgePos
@@ -44,7 +45,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 0.8, y: 1, z: 0.8}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &9044856282231278612
 MonoBehaviour:
@@ -60,6 +61,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 1
   color: {r: 0, g: 0, b: 1, a: 1}
+--- !u!114 &72384894347259190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4623928027941710259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70e8d53d8fe06644b809aebadc65d33c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &427235125
 PrefabInstance:
   m_ObjectHideFlags: 0

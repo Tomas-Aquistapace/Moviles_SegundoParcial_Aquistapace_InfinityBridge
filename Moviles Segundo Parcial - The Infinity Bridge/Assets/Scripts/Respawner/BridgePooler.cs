@@ -3,18 +3,20 @@ using UnityEngine;
 
 public class BridgePooler : MonoBehaviourSingleton<BridgePooler>
 {
-    [Header("Spawner")]
-    [SerializeField] private Transform spawner;
-    [SerializeField] private float minTimeToRespawn = 5f;
-    [SerializeField] private float maxTimeToRespawn = 7f;
-    [SerializeField] private float timeToRespawn = 0f;
+    [Header("Bridge Spawner")]
+    [SerializeField] private Transform bridgeSpawner;
+    [SerializeField] private float minTimeToRespawnBridge = 5f;
+    [SerializeField] private float maxTimeToRespawnBridge = 7f;
+    [SerializeField] private float timeToRespawnBridge = 0f;
 
     [Header("Bridge")]
     [SerializeField] int numberOfBridgePieces = 15;
     private GameObject prefBridge;
 
+    // =============================
+
     private Queue<GameObject> bridgeQueue;
-    private float time = 0f;
+    private float timeBridge = 0f;
 
     private enum SpawnerState
     {
@@ -47,7 +49,7 @@ public class BridgePooler : MonoBehaviourSingleton<BridgePooler>
             bridgeQueue.Enqueue(go);
         }
 
-        timeToRespawn = Random.Range(minTimeToRespawn, maxTimeToRespawn);
+        timeToRespawnBridge = Random.Range(minTimeToRespawnBridge, maxTimeToRespawnBridge);
     }
 
     private void OnEnable()
@@ -64,35 +66,35 @@ public class BridgePooler : MonoBehaviourSingleton<BridgePooler>
     {
         if(spawnerState != SpawnerState.Stop)
         {
-            time += Time.deltaTime;
+            timeBridge += Time.deltaTime;
 
-            if(time >= timeToRespawn)
+            if(timeBridge >= timeToRespawnBridge)
             {
                 RespawnPiece();
 
-                timeToRespawn = Random.Range(minTimeToRespawn, maxTimeToRespawn);
+                timeToRespawnBridge = Random.Range(minTimeToRespawnBridge, maxTimeToRespawnBridge);
 
-                time = 0f;
+                timeBridge = 0f;
             }
         }
     }
 
     // =============================
 
-    public Queue<GameObject> GetBridgeList()
-    {
-        return bridgeQueue;
-    }
-
-    public void ActivateBridgePiece()
-    {
-        bridgeQueue.Peek().SetActive(true);
-    }
-    
-    public void DesactivateBridgePiece()
-    {
-        bridgeQueue.Peek().SetActive(false);
-    }
+    //public Queue<GameObject> GetBridgeList()
+    //{
+    //    return bridgeQueue;
+    //}
+    //
+    //public void ActivateBridgePiece()
+    //{
+    //    bridgeQueue.Peek().SetActive(true);
+    //}
+    //
+    //public void DesactivateBridgePiece()
+    //{
+    //    bridgeQueue.Peek().SetActive(false);
+    //}
 
     // =============================
 
@@ -101,8 +103,8 @@ public class BridgePooler : MonoBehaviourSingleton<BridgePooler>
         GameObject piece;
         piece = bridgeQueue.Dequeue();
 
-        float rand = Random.Range(-spawner.localScale.x / 2, spawner.localScale.x / 2);
-        Vector3 newPos = new Vector3(rand, spawner.position.y, spawner.position.z);
+        float rand = Random.Range(-bridgeSpawner.localScale.x / 2, bridgeSpawner.localScale.x / 2);
+        Vector3 newPos = new Vector3(rand, bridgeSpawner.position.y, bridgeSpawner.position.z);
 
         piece.transform.GetComponent<PieceController>().ResetState(newPos);
 
@@ -121,6 +123,11 @@ public class BridgePooler : MonoBehaviourSingleton<BridgePooler>
                 
                 break;
         }
+    }
+
+    public void RespawnShip()
+    {
+
     }
 
     public void StopBridgePooler()

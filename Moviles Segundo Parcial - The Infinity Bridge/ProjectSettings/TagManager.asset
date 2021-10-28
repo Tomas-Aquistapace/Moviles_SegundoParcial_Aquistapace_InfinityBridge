@@ -8,6 +8,8 @@ TagManager:
   - Initial
   - DangerZone
   - BridgePiece
+  - DangerousShip
+  - Bridge
   layers:
   - Default
   - TransparentFX

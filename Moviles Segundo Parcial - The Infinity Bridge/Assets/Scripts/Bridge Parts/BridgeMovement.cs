@@ -28,7 +28,7 @@ public class BridgeMovement : MonoBehaviour
                 Vector3 newDirection = -Vector3.forward * Time.deltaTime * GameManager.GetReleaseSpeed();
                 this.transform.position += newDirection;
             }
-            else if (pieceController.bridgeState == PieceController.State.Locked)
+            else if (pieceController.bridgeState == PieceController.State.Locked || pieceController.bridgeState == PieceController.State.Collapse)
             {
                 Vector3 newDirection = -Vector3.forward * Time.deltaTime * GameManager.GetLockedSpeed();
                 this.transform.position += newDirection;

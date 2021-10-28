@@ -30,7 +30,9 @@ public class PointerManager : MonoBehaviour
 
     private void Update()
     {
-        if(selected)
+        if (selected)
             arrowDown.transform.position = selected.position + offsetArrow;
+        else
+            arrowDown.transform.position = this.transform.position;
     }
 }
