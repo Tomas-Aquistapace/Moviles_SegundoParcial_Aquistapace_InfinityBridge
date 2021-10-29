@@ -2,10 +2,10 @@
 
 public class CollapsePiece : MonoBehaviour
 {
-    
+
     public void Collapse()
     {
-        Destroy(this.transform.parent.gameObject);
+        this.transform.parent.gameObject.SetActive(false);
     }
 
 }

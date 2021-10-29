@@ -333,6 +333,7 @@ MonoBehaviour:
   body: {fileID: 3519278191535819929}
   animator: {fileID: 8913415221999897174}
   rotationSpeed: 5
+  timeToUnlock: 0.5
   obstacles:
   - {fileID: 3519278191427111742}
   - {fileID: 3519278191519209752}

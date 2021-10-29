@@ -19,6 +19,8 @@ public class PieceController : MonoBehaviour
 
     [SerializeField] private float rotationSpeed = 5f;
 
+    [SerializeField] private float timeToUnlock = 1f;
+
     [SerializeField] private GameObject[] obstacles;
     private int lastObstacle = -1;
 
@@ -31,6 +33,8 @@ public class PieceController : MonoBehaviour
 
     private GameObject constructionZoneRef;
 
+    private float time = 0f;
+
     // =======================
 
     private void Start()
@@ -38,6 +42,19 @@ public class PieceController : MonoBehaviour
         constructionZone.SetActive(false);
 
         ableToRotate = true;
+
+        time = 0f;
+    }
+
+    private void OnDisable()
+    {
+        animator.SetBool("Connected", false);
+
+        GetComponent<Collider>().enabled = true;
+
+        bridgeState = State.Avaible;
+
+        body.transform.rotation = Quaternion.Euler(Vector3.zero);
     }
 
     private void OnMouseDown()
@@ -50,18 +67,6 @@ public class PieceController : MonoBehaviour
             bridgeState = State.Moving;
 
             animator.SetBool("Connected", true);
-        }
-        else if (bridgeState == State.Locked)
-        {
-            mZCoord = Camera.main.WorldToScreenPoint(gameObject.transform.position).z;
-            mOffset = gameObject.transform.position - GetMouseWorldPos();
-
-            bridgeState = State.Moving;
-
-            animator.SetBool("Connected", true);
-
-            constructionZoneRef.SetActive(true);
-            constructionZone.SetActive(false);
         }
 
         PointerManager.SetObjSelected(this.transform);
@@ -81,6 +86,27 @@ public class PieceController : MonoBehaviour
             Vector3 newPos = GetMouseWorldPos() + mOffset;
             newPos.y = 0;
             transform.position = newPos;
+        }
+        else if (bridgeState == State.Locked)
+        {
+            if(time > timeToUnlock)
+            {
+                mZCoord = Camera.main.WorldToScreenPoint(gameObject.transform.position).z;
+                mOffset = gameObject.transform.position - GetMouseWorldPos();
+
+                bridgeState = State.Moving;
+
+                animator.SetBool("Connected", false);
+
+                constructionZoneRef.SetActive(true);
+                constructionZone.SetActive(false);
+
+                time = 0f;
+            }
+            else
+            {
+                time += Time.deltaTime;
+            }            
         }
     }
 
@@ -132,13 +158,16 @@ public class PieceController : MonoBehaviour
 
             constructionZoneRef = other.GetComponent<Transform>().gameObject;
 
-
             animator.SetBool("Connected", true);
         }
     }
 
     public void ResetState(Vector3 newPos)
     {
+        animator.SetBool("Connected", false);
+
+        GetComponent<Collider>().enabled = true;
+
         SelectANewObstacle();
 
         bridgeState = State.Avaible;
