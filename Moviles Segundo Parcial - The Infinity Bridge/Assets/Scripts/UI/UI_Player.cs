@@ -6,27 +6,27 @@ public class UI_Player : MonoBehaviour
 {    
     [SerializeField] TextMeshProUGUI pointsText;
 
-    [SerializeField] Image healthBar;
-    [SerializeField] LoseController player;
+    //[SerializeField] Image healthBar;
+    //[SerializeField] LoseController player;
 
-    [SerializeField] float health = 0;
+    //float health = 0;
 
     private void Start()
     {
         pointsText.text = "0";
-        health = 1 / (float)player.lives;
+        //health = 1 / (float)player.lives;
     }
 
     private void OnEnable()
     {
         PlayerState.EarnPoint += EarnPoint;
-        PlayerState.LoseLives += UpgradeLives;
+        //PlayerState.LoseLives += UpgradeLives;
     }
 
     private void OnDisable()
     {
         PlayerState.EarnPoint -= EarnPoint;        
-        PlayerState.LoseLives -= UpgradeLives;
+        //PlayerState.LoseLives -= UpgradeLives;
     }
 
     void EarnPoint(int num)
@@ -34,8 +34,8 @@ public class UI_Player : MonoBehaviour
         pointsText.text = num.ToString();
     }
 
-    void UpgradeLives(int num)
-    {
-        healthBar.fillAmount = health * num;
-    }
+    //void UpgradeLives(int num)
+    //{
+    //    healthBar.fillAmount = health * num;
+    //}
 }
