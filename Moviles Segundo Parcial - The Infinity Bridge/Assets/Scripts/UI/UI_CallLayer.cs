@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class UI_CallLayer : MonoBehaviour
 {
@@ -8,11 +6,15 @@ public class UI_CallLayer : MonoBehaviour
 
     public void CallLayer(int i)
     {
+        AudioManager.instance.Play("Click");
+
         layer[i].GetComponent<Animator>().SetBool("Call", false);
     }
 
     public void CloseLayer(int i)
     {
+        AudioManager.instance.Play("Click");
+
         layer[i].GetComponent<Animator>().SetBool("Call", true);
     }
 

@@ -124,7 +124,7 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleVersion: 0.1
+  bundleVersion: 0.8
   preloadedAssets: []
   metroInputSource: 0
   wsaTransparentSwapchain: 0
@@ -247,7 +247,7 @@ PlayerSettings:
   AndroidTargetArchitectures: 3
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: C:/Users/Tomas/Desktop/Unity Keys/Aquistapace.keystore
+  AndroidKeystoreName: E:/Cosas Varias/Juegos PC - Mesa/PC/Unity Keys/Aquistapace.keystore
   AndroidKeyaliasName: infinitykey
   AndroidBuildApkPerCpuArchitecture: 0
   AndroidTVCompatibility: 0

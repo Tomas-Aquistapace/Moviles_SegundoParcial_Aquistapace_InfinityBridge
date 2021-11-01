@@ -7,6 +7,8 @@ public class UI_PauseController : MonoBehaviour
 
     public void StartPause()
     {
+        AudioManager.instance.Play("Click");
+
         Time.timeScale = 0f;
 
         pauseLayer.SetActive(true);
@@ -15,6 +17,8 @@ public class UI_PauseController : MonoBehaviour
 
     public void ClosePause()
     {
+        AudioManager.instance.Play("Click");
+
         Time.timeScale = 1f;
 
         pauseLayer.SetActive(false);

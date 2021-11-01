@@ -136,7 +136,8 @@ public class PieceController : MonoBehaviour
             animator.SetTrigger("Collapse");
             bridgeState = State.Collapse;
 
-            PointerManager.SetObjSelected(null);
+            if(PointerManager.GetObjSelected() == this.transform)
+                PointerManager.SetObjSelected(null);
 
             if(constructionZoneRef)
                 constructionZoneRef.SetActive(true);

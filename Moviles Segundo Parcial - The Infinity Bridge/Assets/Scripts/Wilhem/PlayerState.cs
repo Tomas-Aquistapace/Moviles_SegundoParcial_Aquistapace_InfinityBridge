@@ -29,6 +29,8 @@ public class PlayerState : MonoBehaviour
 
         if (state == State.Lose)
         {
+            AudioManager.instance.Play("Fall");
+
             LoseGame?.Invoke();
 
             SetNewMaxScore();

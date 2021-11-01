@@ -77,8 +77,14 @@ public class LoseController : MonoBehaviour
 
     void LoseAction()
     {
-        playerState.SetState(PlayerState.State.Lose);
-        anim.SetTrigger("Fall");
+        if(lives > 0)
+        {
+            lives = 0;
+            playerState.UpdateLives(lives);
+            
+            playerState.SetState(PlayerState.State.Lose);
+            anim.SetTrigger("Fall");
+        }
     }
 
     public void AbleToReceiveDamage()
