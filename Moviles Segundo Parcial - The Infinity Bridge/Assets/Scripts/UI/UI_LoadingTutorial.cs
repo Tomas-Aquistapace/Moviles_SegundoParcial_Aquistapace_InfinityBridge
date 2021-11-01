@@ -5,7 +5,7 @@ using TMPro;
 public class UI_LoadingTutorial : MonoBehaviour
 {
     [Header("Fingers: ")]
-    [SerializeField] private GameObject[] fingers = new GameObject[3];
+    [SerializeField] private GameObject[] fingers;
 
     [Header("Sprites: ")]
     [SerializeField] private Sprite fingerImg;

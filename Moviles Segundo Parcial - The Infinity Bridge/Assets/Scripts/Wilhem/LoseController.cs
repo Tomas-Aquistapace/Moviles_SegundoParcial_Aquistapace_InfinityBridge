@@ -68,6 +68,8 @@ public class LoseController : MonoBehaviour
         {
             if(pieceTrans != hit.transform)
             {
+                Audio_Manager.instance.Play("WinPoint");
+
                 pieceTrans = hit.transform;
 
                 playerState.WinPoints();

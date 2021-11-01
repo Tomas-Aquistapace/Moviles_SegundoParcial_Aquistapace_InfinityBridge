@@ -45,6 +45,8 @@ public class ShipBehaviour : MonoBehaviour
     {
         if(isAlive)
         {
+            Audio_Manager.instance.Play("Explosion");
+
             animator.SetBool("Sink", true);
 
             isAlive = false;

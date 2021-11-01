@@ -2,11 +2,16 @@
 using System;
 using UnityEngine;
 
-public class AudioManager : MonoBehaviour
+public class Audio_Manager : MonoBehaviour
 {
-    public Sound[] sounds;
+    public AudioMixerGroup music_AudioMixer;
+    public float musicValue = 0.5f;
+    public AudioMixerGroup sfx_AudioMixer;
+    public float sfxValue = 0.5f;
 
-    public static AudioManager instance;
+    public Audio_Sound[] sounds;
+
+    public static Audio_Manager instance;
 
     private void Awake()
     {
@@ -22,10 +27,22 @@ public class AudioManager : MonoBehaviour
 
         DontDestroyOnLoad(this.gameObject);
 
-        foreach (Sound s in sounds)
+        foreach (Audio_Sound s in sounds)
         {
             s.source = gameObject.AddComponent<AudioSource>();
             s.source.clip = s.clip;
+
+            switch (s.audioGroup)
+            {
+                case Audio_Sound.AudioGroup.Music:
+                    s.source.outputAudioMixerGroup = music_AudioMixer;
+
+                    break;
+                case Audio_Sound.AudioGroup.SFX:
+                    s.source.outputAudioMixerGroup = sfx_AudioMixer;
+
+                    break;
+            }
 
             s.source.volume = s.volume;
             s.source.pitch = s.pitch;
@@ -40,7 +57,7 @@ public class AudioManager : MonoBehaviour
 
     public void Play(string name)
     {
-        Sound s = Array.Find(sounds, sound => sound.name == name);
+        Audio_Sound s = Array.Find(sounds, sound => sound.name == name);
         if(s == null)
         {
             Debug.LogError("Sound: " + name + " not found!");
@@ -51,7 +68,7 @@ public class AudioManager : MonoBehaviour
 
     public void Stop(string name)
     {
-        Sound s = Array.Find(sounds, sound => sound.name == name);
+        Audio_Sound s = Array.Find(sounds, sound => sound.name == name);
         if (s == null)
         {
             Debug.LogError("Sound: " + name + " not found!");

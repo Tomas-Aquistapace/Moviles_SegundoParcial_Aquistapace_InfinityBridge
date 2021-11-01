@@ -1043,7 +1043,6 @@ MonoBehaviour:
   fingers:
   - {fileID: 1772464446}
   - {fileID: 784739431}
-  - {fileID: 0}
   fingerImg: {fileID: 21300000, guid: f9f25bb6be8733f4894d60fe54097b1d, type: 3}
   mouseImg:
   - {fileID: -7999252550995774120, guid: 42dd0837b27e1ac49ad00bc94b8ab7af, type: 3}

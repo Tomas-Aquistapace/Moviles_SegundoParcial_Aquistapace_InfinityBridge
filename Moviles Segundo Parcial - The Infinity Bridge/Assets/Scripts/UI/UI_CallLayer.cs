@@ -6,14 +6,14 @@ public class UI_CallLayer : MonoBehaviour
 
     public void CallLayer(int i)
     {
-        AudioManager.instance.Play("Click");
+        Audio_Manager.instance.Play("Click");
 
         layer[i].GetComponent<Animator>().SetBool("Call", false);
     }
 
     public void CloseLayer(int i)
     {
-        AudioManager.instance.Play("Click");
+        Audio_Manager.instance.Play("Click");
 
         layer[i].GetComponent<Animator>().SetBool("Call", true);
     }

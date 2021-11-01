@@ -43,28 +43,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ae6d40ed1add5d4bab10e93e7b5eb60, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  music_AudioMixer: {fileID: 24300002, guid: 697ea1224f902184497d24c73efd9056, type: 2}
+  musicValue: 0.5
+  sfx_AudioMixer: {fileID: 24300002, guid: ea80b41ed02f4384085ca8fedd200346, type: 2}
+  sfxValue: 0.5
   sounds:
   - name: Fall
     clip: {fileID: 8300000, guid: 119ac4e7136282840a4fa72dd47c7c97, type: 3}
-    volume: 0.75
+    volume: 0.5
     pitch: 1
     loop: 0
+    audioGroup: 1
     source: {fileID: 0}
   - name: Click
     clip: {fileID: 8300000, guid: deeec36de1c44c1408876496d9280b1b, type: 3}
     volume: 0.5
     pitch: 1
     loop: 0
+    audioGroup: 1
     source: {fileID: 0}
-  - name: Drop
+  - name: Collapse
     clip: {fileID: 8300000, guid: 058414933869fca48a967365e204ad9d, type: 3}
-    volume: 0.75
+    volume: 0.3
     pitch: 1
     loop: 0
+    audioGroup: 1
     source: {fileID: 0}
   - name: WinCoin
     clip: {fileID: 8300000, guid: 9734cc6e07c72d84788ea1184ea1fb21, type: 3}
     volume: 0.75
     pitch: 1
     loop: 0
+    audioGroup: 1
+    source: {fileID: 0}
+  - name: WinPoint
+    clip: {fileID: 8300000, guid: 53f72237df17a8e42841b5f4704e32d3, type: 3}
+    volume: 0.05
+    pitch: 1
+    loop: 0
+    audioGroup: 1
+    source: {fileID: 0}
+  - name: Explosion
+    clip: {fileID: 8300000, guid: eb5a4e1e0f0796d4db0aa002686af2a0, type: 3}
+    volume: 0.2
+    pitch: 1
+    loop: 0
+    audioGroup: 1
     source: {fileID: 0}

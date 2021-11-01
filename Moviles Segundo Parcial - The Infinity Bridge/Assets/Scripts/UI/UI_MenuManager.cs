@@ -5,14 +5,14 @@ public class UI_MenuManager : MonoBehaviour
 {
     public void GoToSceneLoading(string scene)
     {
-        AudioManager.instance.Play("Click");
+        Audio_Manager.instance.Play("Click");
 
         ScenesLoaderHandler.LoadScene(scene);
     }
 
     public void RestartScene()
     {
-        AudioManager.instance.Play("Click");
+        Audio_Manager.instance.Play("Click");
 
         string scene = SceneManager.GetActiveScene().name;
 
@@ -26,7 +26,7 @@ public class UI_MenuManager : MonoBehaviour
 
     public void ExitGame()
     {
-        AudioManager.instance.Play("Click");
+        Audio_Manager.instance.Play("Click");
 
         Application.Quit();
     }

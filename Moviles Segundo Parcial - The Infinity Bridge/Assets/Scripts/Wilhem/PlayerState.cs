@@ -29,7 +29,7 @@ public class PlayerState : MonoBehaviour
 
         if (state == State.Lose)
         {
-            AudioManager.instance.Play("Fall");
+            Audio_Manager.instance.Play("Fall");
 
             LoseGame?.Invoke();
 

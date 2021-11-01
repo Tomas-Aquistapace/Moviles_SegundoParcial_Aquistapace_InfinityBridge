@@ -2,8 +2,14 @@
 using UnityEngine;
 
 [System.Serializable]
-public class Sound
+public class Audio_Sound
 {
+    public enum AudioGroup
+    {
+        Music,
+        SFX
+    }
+
     public string name;
 
     public AudioClip clip;
@@ -14,6 +20,8 @@ public class Sound
     public float pitch;
 
     public bool loop;
+
+    public AudioGroup audioGroup;
 
     [HideInInspector]
     public AudioSource source;

@@ -133,6 +133,8 @@ public class PieceController : MonoBehaviour
             Collider col = GetComponent<Collider>();
             col.enabled = false;
 
+            Audio_Manager.instance.Play("Collapse");
+
             animator.SetTrigger("Collapse");
             bridgeState = State.Collapse;
 
