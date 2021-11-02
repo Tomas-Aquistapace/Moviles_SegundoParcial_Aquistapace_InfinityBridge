@@ -50,11 +50,6 @@ public class Audio_Manager : MonoBehaviour
         }
     }
 
-    private void Start()
-    {
-        
-    }
-
     public void Play(string name)
     {
         Audio_Sound s = Array.Find(sounds, sound => sound.name == name);

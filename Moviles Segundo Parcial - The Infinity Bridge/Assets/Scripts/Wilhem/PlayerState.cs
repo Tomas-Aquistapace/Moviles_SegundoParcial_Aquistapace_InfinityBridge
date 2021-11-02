@@ -16,7 +16,6 @@ public class PlayerState : MonoBehaviour
     [SerializeField] private State state;
     
     public int points = 0;
-
     public int coins = 0;
 
     // ============================
@@ -68,9 +67,13 @@ public class PlayerState : MonoBehaviour
         PlayerData data = SaveSystem.LoadPlayer();
         int oldPoints = data.points;
 
-        if (oldPoints < points)
+        if (oldPoints > points)
         {
-            SaveSystem.SaveData(this);
+            points = oldPoints;
         }
+
+        coins += data.coins;
+
+        SaveSystem.SaveData(this);
     }
 }

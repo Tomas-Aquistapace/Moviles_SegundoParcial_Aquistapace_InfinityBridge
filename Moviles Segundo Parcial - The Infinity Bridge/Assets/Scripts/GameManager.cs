@@ -28,6 +28,13 @@ public class GameManager : MonoBehaviour
         PlayerState.LoseGame -= StopSpeed;
     }
 
+    private void Start()
+    {
+        Audio_Manager.instance.Stop("Menu");
+
+        Audio_Manager.instance.Play("Gameplay");
+    }
+
     public static float GetReleaseSpeed()
     {
         return releaseSpeed;

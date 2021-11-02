@@ -71,7 +71,7 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: WinCoin
     clip: {fileID: 8300000, guid: 9734cc6e07c72d84788ea1184ea1fb21, type: 3}
-    volume: 0.75
+    volume: 0.5
     pitch: 1
     loop: 0
     audioGroup: 1
@@ -89,4 +89,18 @@ MonoBehaviour:
     pitch: 1
     loop: 0
     audioGroup: 1
+    source: {fileID: 0}
+  - name: Menu
+    clip: {fileID: 8300000, guid: 87e8615d53c9a914e87922c456a0e874, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 1
+    audioGroup: 0
+    source: {fileID: 0}
+  - name: Gameplay
+    clip: {fileID: 8300000, guid: 1bad4778937be8a4e9d5f8df697dc63b, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 1
+    audioGroup: 0
     source: {fileID: 0}

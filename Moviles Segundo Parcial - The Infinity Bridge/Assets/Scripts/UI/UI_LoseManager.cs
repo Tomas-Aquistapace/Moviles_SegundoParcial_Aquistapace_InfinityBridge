@@ -11,6 +11,7 @@ public class UI_LoseManager : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI maxPoints;
     [SerializeField] TextMeshProUGUI newPoints;
+    [SerializeField] TextMeshProUGUI actualCoins;
 
     [SerializeField] PlayerState player;
 
@@ -35,11 +36,19 @@ public class UI_LoseManager : MonoBehaviour
 
         maxPoints.text = GetActualRecord().ToString();
         newPoints.text = player.points.ToString();
+
+        actualCoins.text = GetActualCoins().ToString();
     }
 
     int GetActualRecord()
     {
         PlayerData data = SaveSystem.LoadPlayer();
         return data.points;
+    }
+
+    int GetActualCoins()
+    {
+        PlayerData data = SaveSystem.LoadPlayer();
+        return player.coins + data.coins;
     }
 }

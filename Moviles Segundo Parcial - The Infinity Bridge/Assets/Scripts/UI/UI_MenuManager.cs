@@ -21,7 +21,11 @@ public class UI_MenuManager : MonoBehaviour
 
     public void GoToSceneWithoutLoading(string scene)
     {
+        Audio_Manager.instance.Play("Click");
+
         SceneManager.LoadScene(scene);
+
+        Audio_Manager.instance.Stop("Gameplay");
     }
 
     public void ExitGame()

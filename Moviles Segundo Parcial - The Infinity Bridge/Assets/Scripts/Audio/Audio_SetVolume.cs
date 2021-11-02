@@ -10,6 +10,8 @@ public class Audio_SetVolume : MonoBehaviour
     {
         musicSlider.value = Audio_Manager.instance.musicValue;
         sfxSlider.value = Audio_Manager.instance.sfxValue;
+
+        Audio_Manager.instance.Play("Menu");
     }
 
     public void SetMusicVolume(float value)
