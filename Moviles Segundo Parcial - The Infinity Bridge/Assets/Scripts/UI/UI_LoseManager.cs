@@ -3,8 +3,10 @@ using TMPro;
 
 public class UI_LoseManager : MonoBehaviour
 {
+    [Header("Disable Items")]
     [SerializeField] GameObject[] disableUI_Items;
 
+    [Header("Lose Screen")]
     [SerializeField] GameObject loseScreen;
 
     [SerializeField] TextMeshProUGUI maxPoints;

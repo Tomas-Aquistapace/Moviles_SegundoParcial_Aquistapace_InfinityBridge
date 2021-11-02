@@ -161,7 +161,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   anim: {fileID: 4621176592969515481}
-  lives: 3
+  lives: 1
   ableToReceive: 1
 --- !u!1001 &4621176594310548104
 PrefabInstance:

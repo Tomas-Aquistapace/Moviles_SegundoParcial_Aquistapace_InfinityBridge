@@ -55,6 +55,12 @@ public class LoseController : MonoBehaviour
                 }
             }
         }
+        else if(other.transform.tag == "Coin")
+        {
+            other.transform.gameObject.SetActive(false);
+
+            playerState.WinCoins();
+        }
     }
 
     void FloorDistance()
@@ -68,8 +74,6 @@ public class LoseController : MonoBehaviour
         {
             if(pieceTrans != hit.transform)
             {
-                Audio_Manager.instance.Play("WinPoint");
-
                 pieceTrans = hit.transform;
 
                 playerState.WinPoints();

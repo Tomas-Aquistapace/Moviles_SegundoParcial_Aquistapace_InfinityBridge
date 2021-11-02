@@ -13,10 +13,20 @@ public class BridgePooler : MonoBehaviourSingleton<BridgePooler>
     [SerializeField] int numberOfBridgePieces = 15;
     private GameObject prefBridge;
 
+    [Header("Coin")]
+    [SerializeField] private int numberOfCoins = 5;
+    [SerializeField] private int min_distanceBetweenCoins = 5;
+    [SerializeField] private int max_distanceBetweenCoins = 9;
+    [SerializeField] private int distanceBetweenCoins = 0;
+    private GameObject prefCoin;
+
     // =============================
 
     private Queue<GameObject> bridgeQueue;
     private float timeBridge = 0f;
+    
+    private Queue<GameObject> coinsQueue;
+    private int coinIndex = 0;
 
     private enum SpawnerState
     {
@@ -31,6 +41,8 @@ public class BridgePooler : MonoBehaviourSingleton<BridgePooler>
     public override void Awake()
     {
         base.Awake();
+
+        // Bridge:
 
         Object pref = Resources.Load("Bridge/Piece_of_Bridge", typeof(GameObject));
         prefBridge = (GameObject)pref;
@@ -50,6 +62,27 @@ public class BridgePooler : MonoBehaviourSingleton<BridgePooler>
         }
 
         timeToRespawnBridge = Random.Range(minTimeToRespawnBridge, maxTimeToRespawnBridge);
+
+        // Coin:
+
+        coinsQueue = new Queue<GameObject>();
+
+        Object coin = Resources.Load("Coin/Coin_Collectible", typeof(GameObject));
+        prefCoin = (GameObject)coin;
+
+        for (int i = 0; i < numberOfCoins; i++)
+        {
+            GameObject c = Instantiate(prefCoin);
+            c.transform.parent = this.transform;
+
+            c.transform.name = prefCoin.name + "_" + i;
+
+            c.SetActive(false);
+
+            coinsQueue.Enqueue(c);
+        }
+
+        distanceBetweenCoins = Random.Range(min_distanceBetweenCoins, max_distanceBetweenCoins);
     }
 
     private void OnEnable()
@@ -123,8 +156,36 @@ public class BridgePooler : MonoBehaviourSingleton<BridgePooler>
                 
                 break;
         }
+
+        // ---
+
+        SpawnACoin(piece);
     }
 
+    void SpawnACoin(GameObject piece)
+    {
+        coinIndex++;
+
+        if(coinIndex >= distanceBetweenCoins)
+        {
+            coinIndex = 0;
+            distanceBetweenCoins = Random.Range(min_distanceBetweenCoins, max_distanceBetweenCoins);
+
+
+            GameObject c;
+            c = coinsQueue.Dequeue();
+
+            c.SetActive(true);
+
+            coinsQueue.Enqueue(c);
+
+            c.transform.parent = piece.GetComponentInChildren<Transform>();
+            c.transform.position = piece.GetComponentInChildren<Transform>().position + new Vector3(0, c.transform.position.y, 0);
+        }
+    }
+
+    // ================================
+    
     public void StopBridgePooler()
     {
         spawnerState = SpawnerState.Stop;

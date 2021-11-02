@@ -6,6 +6,7 @@ public class PlayerState : MonoBehaviour
     public static Action LoseGame;
     public static Action<int> LoseLives;
     public static Action<int> EarnPoint;
+    public static Action<int> EarnCoin;
 
     public enum State
     {
@@ -15,6 +16,8 @@ public class PlayerState : MonoBehaviour
     [SerializeField] private State state;
     
     public int points = 0;
+
+    public int coins = 0;
 
     // ============================
 
@@ -46,7 +49,18 @@ public class PlayerState : MonoBehaviour
     {
         points++;
 
+        Audio_Manager.instance.Play("WinPoint");
+
         EarnPoint?.Invoke(points);
+    }
+    
+    public void WinCoins()
+    {
+        coins++;
+
+        Audio_Manager.instance.Play("WinCoin");
+
+        EarnCoin?.Invoke(coins);
     }
 
     void SetNewMaxScore()
