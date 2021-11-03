@@ -16,6 +16,17 @@ public static class SaveSystem
         formatter.Serialize(stream, data);
         stream.Close();
     }
+    
+    public static void SaveData(PlayerData data)
+    {
+        BinaryFormatter formatter = new BinaryFormatter();
+
+        string path = Path.GetDataPath();
+        FileStream stream = new FileStream(path, FileMode.Create);
+
+        formatter.Serialize(stream, data);
+        stream.Close();
+    }
 
     public static PlayerData LoadPlayer()
     {
@@ -35,7 +46,8 @@ public static class SaveSystem
         {
             Debug.LogWarning("Save File not found in " + path + ". Creating a new one");
 
-            SaveData(null);
+            PlayerData player = null;
+            SaveData(player);
 
             BinaryFormatter formatter = new BinaryFormatter();
             FileStream stream = new FileStream(path, FileMode.Open);

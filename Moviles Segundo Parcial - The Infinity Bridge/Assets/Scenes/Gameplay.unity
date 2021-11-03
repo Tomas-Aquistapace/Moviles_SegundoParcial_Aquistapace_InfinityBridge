@@ -4622,7 +4622,7 @@ PrefabInstance:
     - target: {fileID: 4621176594711451125, guid: 2f35fbeb32e71c143a4da56103dbe3d2,
         type: 3}
       propertyPath: m_Name
-      value: Wilhem Character
+      value: Player Character
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2f35fbeb32e71c143a4da56103dbe3d2, type: 3}

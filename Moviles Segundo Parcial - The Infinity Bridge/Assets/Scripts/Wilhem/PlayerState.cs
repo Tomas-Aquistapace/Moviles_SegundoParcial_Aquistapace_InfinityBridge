@@ -14,9 +14,18 @@ public class PlayerState : MonoBehaviour
         Lose
     };
     [SerializeField] private State state;
-    
-    public int points = 0;
-    public int coins = 0;
+
+    // Score:
+    public int points;
+    public int coins;
+
+    // Skins:
+    [HideInInspector] public int skin;
+    [HideInInspector] public bool froggy;
+    [HideInInspector] public bool skelly;
+
+    [Header("3D Model")]
+    public MeshFilter meshFilter;
 
     // ============================
 
@@ -62,6 +71,13 @@ public class PlayerState : MonoBehaviour
         EarnCoin?.Invoke(coins);
     }
 
+    public void SetMeshSkin(Mesh model)
+    {
+        meshFilter.mesh = model;
+    }
+
+    // ==================
+
     void SetNewMaxScore()
     {
         PlayerData data = SaveSystem.LoadPlayer();
@@ -76,4 +92,5 @@ public class PlayerState : MonoBehaviour
 
         SaveSystem.SaveData(this);
     }
+
 }
