@@ -9,6 +9,10 @@ public class UI_CurrentRecord : MonoBehaviour
     private void Start()
     {
         currentRecord.text = LoadData.GetActualRecord().ToString();
+    }
+
+    private void Update()
+    {
         currentCoins.text = LoadData.GetActualCoins().ToString();
     }
 }

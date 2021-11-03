@@ -4,6 +4,19 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 public static class SaveSystem
 {
+    public static void SaveData()
+    {
+        BinaryFormatter formatter = new BinaryFormatter();
+
+        string path = Path.GetDataPath();
+        FileStream stream = new FileStream(path, FileMode.Create);
+
+        PlayerData data = new PlayerData();
+
+        formatter.Serialize(stream, data);
+        stream.Close();
+    }
+    
     public static void SaveData(PlayerState player)
     {
         BinaryFormatter formatter = new BinaryFormatter();
@@ -46,8 +59,9 @@ public static class SaveSystem
         {
             Debug.LogWarning("Save File not found in " + path + ". Creating a new one");
 
-            PlayerData player = null;
-            SaveData(player);
+            //PlayerData player = new PlayerData();
+            //PlayerState player = null;
+            SaveData();
 
             BinaryFormatter formatter = new BinaryFormatter();
             FileStream stream = new FileStream(path, FileMode.Open);

@@ -27,11 +27,17 @@ public class LoadData : MonoBehaviour
     public static bool GetSkinState(int skin)
     {
         if (skin == 1)
+        {
             return data.froggy;
+        }
         else if (skin == 2)
+        {
             return data.skelly;
+        }
         else
+        {
             return true;
+        }
     }
 
     // ===================
@@ -45,7 +51,19 @@ public class LoadData : MonoBehaviour
     {
         data.skin = value;
     }
-    
+
+    public static void SetSkinState(int skin, bool state)
+    {
+        if (skin == 1)
+        {
+            data.froggy = state;
+        }
+        else if (skin == 2)
+        {
+            data.skelly = state;
+        }
+    }
+
     public static void SetFroggeyState(bool value)
     {
         data.froggy = value;

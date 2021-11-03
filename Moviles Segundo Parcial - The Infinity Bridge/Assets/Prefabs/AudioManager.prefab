@@ -104,3 +104,24 @@ MonoBehaviour:
     loop: 1
     audioGroup: 0
     source: {fileID: 0}
+  - name: LockedSkin
+    clip: {fileID: 8300000, guid: 47827747f8b12564db3aadafd4b13ee3, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    audioGroup: 1
+    source: {fileID: 0}
+  - name: UnlockSkin
+    clip: {fileID: 8300000, guid: 871b974be3bab0b49bd8ddfe4fc6ee2c, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    audioGroup: 1
+    source: {fileID: 0}
+  - name: Slide
+    clip: {fileID: 8300000, guid: f57f6cdec04045e44b9f15a5951890d7, type: 3}
+    volume: 0.5
+    pitch: 1
+    loop: 0
+    audioGroup: 1
+    source: {fileID: 0}

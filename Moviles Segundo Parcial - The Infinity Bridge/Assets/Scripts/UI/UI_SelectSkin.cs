@@ -22,7 +22,7 @@ public class UI_SelectSkin : MonoBehaviour
 
     private void Start()
     {
-        //unlockableSkin_State = LoadData.GetSkinState(skinSelected);
+        unlockableSkin_State = LoadData.GetSkinState(skinSelected);
 
         // Check State:
 
@@ -51,15 +51,25 @@ public class UI_SelectSkin : MonoBehaviour
         {
             if (LoadData.GetActualCoins() >= skinValue)
             {
+                Audio_Manager.instance.Play("UnlockSkin");
+
                 LoadData.SetActualCoins(skinValue);
 
                 unlockableSkin_State = true;
-                
+
+                LoadData.SetSkinState(skinSelected, unlockableSkin_State);
+
                 this.transform.GetComponent<Button>().image.sprite = unlockedSkins;
+            }
+            else
+            {
+                Audio_Manager.instance.Play("LockedSkin");
             }
         }
         else
         {
+            Audio_Manager.instance.Play("Click");
+
             prefPlayer.transform.GetComponent<PlayerState>().meshFilter.mesh = skin;
 
             LoadData.SetActualSkin(skinSelected);

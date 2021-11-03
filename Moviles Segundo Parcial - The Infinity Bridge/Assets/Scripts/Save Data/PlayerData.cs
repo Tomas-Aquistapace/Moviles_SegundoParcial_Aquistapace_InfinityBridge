@@ -10,27 +10,25 @@ public class PlayerData
     public bool froggy;
     public bool skelly;
 
+    public PlayerData()
+    {
+        points = 0;
+        coins = 0;
+
+        skin = 0;
+
+        froggy = false;
+        skelly = false;
+    }
+
     public PlayerData(PlayerState player)
     {
-        if (player != null)
-        {
-            points = player.points;
-            coins = player.coins;
+        points = player.points;
+        coins = player.coins;
 
-            skin = player.skin;
+        skin = player.skin;
 
-            froggy = player.froggy;
-            skelly = player.skelly;
-        }
-        else
-        {
-            points = 0;
-            coins = 0;
-
-            skin = 0;
-
-            froggy = false;
-            skelly = false;
-        }
+        froggy = player.froggy;
+        skelly = player.skelly;
     }
 }

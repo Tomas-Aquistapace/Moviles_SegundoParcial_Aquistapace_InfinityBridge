@@ -187,6 +187,8 @@ public class PieceController : MonoBehaviour
     {
         if (ableToRotate)
         {
+            Audio_Manager.instance.Play("Slide");
+
             StartCoroutine(RotationLerp(newPos));
         }
     }
