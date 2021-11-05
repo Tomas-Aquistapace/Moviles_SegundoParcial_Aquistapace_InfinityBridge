@@ -6,6 +6,9 @@ public class UI_SelectSkin : MonoBehaviour
     [Header("Player")]
     public GameObject prefPlayer;
 
+    [Header("Menu")]
+    public MeshFilter menuPlayer;
+
     [Header("Skins")]
     public int skinSelected;
     public int skinValue = 10;
@@ -41,6 +44,8 @@ public class UI_SelectSkin : MonoBehaviour
         {
             prefPlayer.transform.GetComponent<PlayerState>().meshFilter.mesh = skin;
 
+            menuPlayer.mesh = skin;
+
             arrow.transform.localPosition = pos;
         }
     }
@@ -71,6 +76,8 @@ public class UI_SelectSkin : MonoBehaviour
             Audio_Manager.instance.Play("Click");
 
             prefPlayer.transform.GetComponent<PlayerState>().meshFilter.mesh = skin;
+
+            menuPlayer.mesh = skin;
 
             LoadData.SetActualSkin(skinSelected);
 
