@@ -59,8 +59,6 @@ public static class SaveSystem
         {
             Debug.LogWarning("Save File not found in " + path + ". Creating a new one");
 
-            //PlayerData player = new PlayerData();
-            //PlayerState player = null;
             SaveData();
 
             BinaryFormatter formatter = new BinaryFormatter();

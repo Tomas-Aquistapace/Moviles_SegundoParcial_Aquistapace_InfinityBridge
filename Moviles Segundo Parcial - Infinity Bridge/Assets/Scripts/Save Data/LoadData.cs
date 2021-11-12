@@ -78,14 +78,6 @@ public class LoadData : MonoBehaviour
 
     public static void SaveData()
     {
-        //PlayerState player = new PlayerState();
-        //
-        //player.points = GetActualRecord();
-        //player.coins = GetActualCoins();
-        //player.skin = GetActualSkin();
-        //player.froggy = data.froggy;
-        //player.skelly = data.skelly;
-
         SaveSystem.SaveData(data);
     }
 }

@@ -47,6 +47,8 @@ public class UI_SelectSkin : MonoBehaviour
             menuPlayer.mesh = skin;
 
             arrow.transform.localPosition = pos;
+
+            LoadData.SaveData();
         }
     }
 

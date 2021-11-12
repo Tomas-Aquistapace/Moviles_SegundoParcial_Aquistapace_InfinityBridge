@@ -29,6 +29,13 @@ public class PlayerState : MonoBehaviour
 
     // ============================
 
+    private void Start()
+    {
+        skin = LoadData.GetActualSkin();
+
+        meshFilter.mesh = LoadSkinAssets.GetSkin();
+    }
+
     public State GetState()
     {
         return state;
@@ -40,6 +47,8 @@ public class PlayerState : MonoBehaviour
 
         if (state == State.Lose)
         {
+            Handheld.Vibrate();
+
             Audio_Manager.instance.Play("Fall");
 
             LoseGame?.Invoke();
@@ -69,11 +78,6 @@ public class PlayerState : MonoBehaviour
         Audio_Manager.instance.Play("WinCoin");
 
         EarnCoin?.Invoke(coins);
-    }
-
-    public void SetMeshSkin(Mesh model)
-    {
-        meshFilter.mesh = model;
     }
 
     // ==================
