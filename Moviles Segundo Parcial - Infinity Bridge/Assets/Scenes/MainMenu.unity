@@ -2755,6 +2755,7 @@ GameObject:
   - component: {fileID: 1254235996}
   - component: {fileID: 1254235997}
   - component: {fileID: 1254235998}
+  - component: {fileID: 1254235999}
   m_Layer: 0
   m_Name: Menu Manager
   m_TagString: Untagged
@@ -2843,6 +2844,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   musicSlider: {fileID: 678580275}
   sfxSlider: {fileID: 10042825}
+--- !u!114 &1254235999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1254235992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef3517867d95fe8488b3be69f5260bbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerScore: 0
 --- !u!1 &1309312071
 GameObject:
   m_ObjectHideFlags: 0

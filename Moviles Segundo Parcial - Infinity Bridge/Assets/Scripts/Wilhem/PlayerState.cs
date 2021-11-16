@@ -47,7 +47,10 @@ public class PlayerState : MonoBehaviour
 
         if (state == State.Lose)
         {
+
+#if UNITY_ANDROID
             Handheld.Vibrate();
+#endif
 
             Audio_Manager.instance.Play("Fall");
 

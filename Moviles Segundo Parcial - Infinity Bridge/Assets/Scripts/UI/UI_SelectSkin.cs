@@ -67,6 +67,10 @@ public class UI_SelectSkin : MonoBehaviour
                 LoadData.SetSkinState(skinSelected, unlockableSkin_State);
 
                 this.transform.GetComponent<Button>().image.sprite = unlockedSkins;
+
+#if UNITY_ANDROID
+                PlayGames.UnlockAchievement(skinSelected);
+#endif
             }
             else
             {
