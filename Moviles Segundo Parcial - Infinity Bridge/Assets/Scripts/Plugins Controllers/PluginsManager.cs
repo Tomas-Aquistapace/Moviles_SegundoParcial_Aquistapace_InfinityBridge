@@ -11,10 +11,7 @@ public class PluginsManager : MonoBehaviour
 #elif UNITY_ANDROID
     loggerImpl = new AquistapaceLoggerImpl();
 #endif
-    }
 
-    private void Start()
-    {
         StartGame();
     }
 
@@ -31,5 +28,12 @@ public class PluginsManager : MonoBehaviour
     public void EndGame()
     {
         loggerImpl.SendLog("End Game");
+    }
+
+    // -------------------
+
+    public static LoggerImpl GetLogger()
+    {
+        return loggerImpl;
     }
 }
