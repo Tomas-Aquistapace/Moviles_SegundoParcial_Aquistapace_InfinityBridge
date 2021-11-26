@@ -7,10 +7,9 @@ using GooglePlayGames.BasicApi;
 public class PlayGames : MonoBehaviour
 {
     public int playerScore;
-    string leaderboardID = "";
-
+    
+    static string leaderboardID = GPGSIds.leaderboard_infinity_board;
     static string[] achievementID = new string[3];
-
     public static PlayGamesPlatform platform;
 
     void Start()
@@ -38,8 +37,6 @@ public class PlayGames : MonoBehaviour
                 Debug.Log("Login Failed");
             }
         });
-
-        UnlockAchievement(0);
     }
 
     public void AddScoreToLeaderboard()
@@ -49,8 +46,16 @@ public class PlayGames : MonoBehaviour
             Social.ReportScore(playerScore, leaderboardID, success => { });
         }
     }
+    
+    public static void AddScoreToLeaderboard(int playerScore)
+    {
+        if (Social.Active.localUser.authenticated)
+        {
+            Social.ReportScore(playerScore, leaderboardID, success => { });
+        }
+    }
 
-    public void ShowLeaderboard()
+    public static void ShowLeaderboard()
     {
         if (Social.Active.localUser.authenticated)
         {
@@ -58,7 +63,7 @@ public class PlayGames : MonoBehaviour
         }
     }
 
-    public void ShowAchievements()
+    public static void ShowAchievements()
     {
         if (Social.Active.localUser.authenticated)
         {

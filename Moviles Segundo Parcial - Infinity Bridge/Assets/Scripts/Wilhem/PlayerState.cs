@@ -94,6 +94,10 @@ public class PlayerState : MonoBehaviour
         {
             points = oldPoints;
         }
+        else
+        {
+            PlayGames.AddScoreToLeaderboard(points);
+        }
 
         coins += data.coins;
 

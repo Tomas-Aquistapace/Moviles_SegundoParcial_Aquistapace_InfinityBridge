@@ -24,9 +24,11 @@
 
 public static class GPGSIds
 {
-        public const string achievement_jump_little_frog = "CgkIvs-8icwPEAIQAg"; // <GPGSID>
-        public const string achievement_white_like_bones = "CgkIvs-8icwPEAIQAw"; // <GPGSID>
-        public const string achievement_you_are_finally_awake = "CgkIvs-8icwPEAIQAQ"; // <GPGSID>
-
+    public const string achievement_jump_little_frog = "CgkIvs-8icwPEAIQAg"; // <GPGSID>
+    public const string leaderboard_infinity_board = "CgkIvs-8icwPEAIQBQ"; // <GPGSID>
+    public const string achievement_white_like_bones = "CgkIvs-8icwPEAIQAw"; // <GPGSID>
+    public const string achievement_you_are_finally_awake = "CgkIvs-8icwPEAIQAQ"; // <GPGSID>
+    
+    public const string leaderBoard_Infinity_Board = "CgkIvs-8icwPEAIQBQ"; // <GPGSID>
 }
 

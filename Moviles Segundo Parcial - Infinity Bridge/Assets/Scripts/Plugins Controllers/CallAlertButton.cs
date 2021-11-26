@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class CallAlertButton : MonoBehaviour
 {
@@ -18,7 +16,7 @@ public class CallAlertButton : MonoBehaviour
 
     public void ShowAlert()
     {
-        string[] strings = { "Tittle", "Alert Message", "Button 1", "Button 2"};
+        string[] strings = { "Alert Android Window", "Alert Message", "Close"};
         PluginsManager.GetLogger().ShowAlertView(strings, (int obj) => {
             Debug.Log("Local handler called: " + obj);
         });

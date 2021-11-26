@@ -7,6 +7,8 @@ public class LoadData : MonoBehaviour
     private void Awake()
     {
         data = SaveSystem.LoadPlayer();
+
+        PlayGames.UnlockAchievement(0);
     }
 
     public static int GetActualRecord()
