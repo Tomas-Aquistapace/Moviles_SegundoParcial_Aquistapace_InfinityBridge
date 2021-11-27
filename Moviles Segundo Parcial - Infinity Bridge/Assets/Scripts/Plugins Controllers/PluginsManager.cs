@@ -1,17 +1,17 @@
-﻿using UnityEngine;
-
-public class PluginsManager : MonoBehaviour
+﻿public class PluginsManager : MonoBehaviourSingleton<PluginsManager>
 {
-    static LoggerImpl loggerImpl;
+    private LoggerImpl loggerImpl;
 
-    private void Awake()
+    public override void Awake()
     {
-#if UNITY_EDITOR || UNITY_STANDALONE
-    loggerImpl = new StandAloneLoggerImpl();
-#elif UNITY_ANDROID
-    loggerImpl = new AquistapaceLoggerImpl();
-#endif
+        base.Awake();
 
+#if UNITY_EDITOR || UNITY_STANDALONE
+        loggerImpl = new StandAloneLoggerImpl();
+#elif UNITY_ANDROID
+        loggerImpl = new AquistapaceLoggerImpl();
+#endif
+        
         StartGame();
     }
 
@@ -32,7 +32,7 @@ public class PluginsManager : MonoBehaviour
 
     // -------------------
 
-    public static LoggerImpl GetLogger()
+    public LoggerImpl GetLogger()
     {
         return loggerImpl;
     }

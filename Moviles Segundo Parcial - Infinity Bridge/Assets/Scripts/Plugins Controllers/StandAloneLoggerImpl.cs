@@ -16,4 +16,14 @@ public class StandAloneLoggerImpl : LoggerImpl
     {
 
     }
+
+    public override void SaveScore(int score)
+    {
+
+    }
+
+    public override int GetScore()
+    {
+        return 0;
+    }
 }

@@ -90,6 +90,8 @@ public class PlayerState : MonoBehaviour
         PlayerData data = SaveSystem.LoadPlayer();
         int oldPoints = data.points;
 
+        PluginsManager.Get().GetLogger().SaveScore(points);
+
         if (oldPoints > points)
         {
             points = oldPoints;

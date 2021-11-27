@@ -34,6 +34,7 @@ public class AquistapaceLoggerImpl : LoggerImpl
                 APluginClass = new AndroidJavaClass(PACK_NAME + "." + POPUP_CLASS_NAME);
                 AndroidJavaClass playerClass = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
                 AndroidJavaObject activity = playerClass.GetStatic<AndroidJavaObject>("currentActivity");
+                Debug.Log("mainActivity: " + activity);
                 APluginClass.SetStatic<AndroidJavaObject>("mainActivity", activity);
             }
             return APluginClass;
@@ -66,20 +67,50 @@ public class AquistapaceLoggerImpl : LoggerImpl
             Debug.LogWarning("AlertView not supported on this platform");
     }
 
-    // --------------------------------------
+
+
+    // --------------------------------------------------------
+
+
 
     const string LOGGER_CLASS_NAME = "ALogger";
 
     static AndroidJavaClass ALoggerClass = null;
     static AndroidJavaObject ALoggerInstance = null;
-
+    
     public void Init()
     {
         Debug.Log("Se crea: " + PACK_NAME + "." + LOGGER_CLASS_NAME);
-
         ALoggerClass = new AndroidJavaClass(PACK_NAME + "." + LOGGER_CLASS_NAME);
-
         ALoggerInstance = ALoggerClass.CallStatic<AndroidJavaObject>("GetInstance");
+    }
+
+    public static AndroidJavaClass LoggerPluginClass
+    {
+        get
+        {
+            if (ALoggerClass == null)
+            {
+                ALoggerClass = new AndroidJavaClass(PACK_NAME + "." + LOGGER_CLASS_NAME);
+                AndroidJavaClass unityJava = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
+                AndroidJavaObject activity = unityJava.GetStatic<AndroidJavaObject>("currentActivity");
+                Debug.Log("activity: " + activity);
+                ALoggerClass.SetStatic<AndroidJavaObject>("activity", activity);
+            }
+            return ALoggerClass;
+        }
+    }
+
+    public AndroidJavaObject LoggerPluginInstance
+    {
+        get
+        {
+            if (ALoggerInstance == null)
+            {
+                ALoggerInstance = LoggerPluginClass.CallStatic<AndroidJavaObject>("GetInstance");
+            }
+            return ALoggerInstance;
+        }
     }
 
     public override void SendLog(string msg)
@@ -88,5 +119,24 @@ public class AquistapaceLoggerImpl : LoggerImpl
             Init();
 
         ALoggerInstance.Call("SendLog", msg);
+    }
+
+    public override void SaveScore(int score)
+    {
+        // Se comento esta linea porque había un problema con el "activity"
+        //if (ALoggerInstance == null)
+        //    Init();
+        //
+        //ALoggerInstance.Call("SaveScore", score);
+    }
+
+    public override int GetScore()
+    {
+        // Se comento esta linea porque había un problema con el "activity"
+        //if (ALoggerInstance == null)
+        //    Init();
+        //
+        //return ALoggerInstance.Call<int>("GetScore");
+        return 0;
     }
 }

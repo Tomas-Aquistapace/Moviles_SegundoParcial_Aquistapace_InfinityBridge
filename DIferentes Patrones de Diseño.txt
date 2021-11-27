@@ -1,0 +1,11 @@
+Object Pooler:
+	En el script: BridgePooler y ShipPooler
+
+Cargas de Scenas de forma asincronica:
+	En el script: ScenesLoaderHandler
+
+Singleton Class
+	En el script: MonoBehaviourSingleton
+
+Factory
+	En el script: InputManager y PluginsManager

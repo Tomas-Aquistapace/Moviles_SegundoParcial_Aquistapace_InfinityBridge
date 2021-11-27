@@ -3,7 +3,6 @@ using System;
 using GooglePlayGames;
 using GooglePlayGames.BasicApi;
 
-
 public class PlayGames : MonoBehaviour
 {
     public int playerScore;
