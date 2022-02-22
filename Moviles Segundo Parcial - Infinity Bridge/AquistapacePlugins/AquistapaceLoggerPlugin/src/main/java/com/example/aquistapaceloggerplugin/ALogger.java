@@ -28,7 +28,9 @@ public class ALogger
     public void SaveScore(int score)
     {
         File path = activity.getFilesDir();
-        File file = new File(path, "score.txt");
+        File file = new File(path, "score.dat");
+
+        Log.i("Saving:","RecordScore:" + score);
 
         try
         {
@@ -52,11 +54,11 @@ public class ALogger
     {
         File path = activity.getFilesDir();
 
-        File file = new File(path, "score.txt");
+        File file = new File(path, "score.dat");
         if (!file.exists())
             return 0;
 
-        int length = (int) file.length();
+        int length = (int)file.length();
         byte[] bytes = new byte[length];
 
         try
@@ -75,8 +77,10 @@ public class ALogger
         {
             Log.e("Exception", "File write failed: " + e.toString());
         }
+        String RecordScore = new String(bytes);
 
-        String maxScore = new String(bytes);
-        return Integer.parseInt(maxScore);
+        Log.i("Loading:", "RecordScore:" + RecordScore);
+
+        return Integer.parseInt(RecordScore);
     }
 }
