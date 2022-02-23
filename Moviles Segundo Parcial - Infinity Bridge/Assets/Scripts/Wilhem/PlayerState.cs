@@ -98,12 +98,14 @@ public class PlayerState : MonoBehaviour
         }
         else
         {
+            data.points = points;
             PlayGames.AddScoreToLeaderboard(points);
         }
 
         coins += data.coins;
+        data.coins = coins;
 
-        SaveSystem.SaveData(this);
+        SaveSystem.SaveData(data);
     }
 
 }

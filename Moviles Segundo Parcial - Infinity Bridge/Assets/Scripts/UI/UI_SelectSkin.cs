@@ -65,6 +65,7 @@ public class UI_SelectSkin : MonoBehaviour
                 unlockableSkin_State = true;
 
                 LoadData.SetSkinState(skinSelected, unlockableSkin_State);
+                LoadData.SaveData();
 
                 this.transform.GetComponent<Button>().image.sprite = unlockedSkins;
 

@@ -1,5 +1,4 @@
-﻿/*
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using Facebook.Unity;
 using UnityEngine.UI;
@@ -8,6 +7,7 @@ public class FacebookScript : MonoBehaviour
 {
     //public Text FriendsText;
 
+    /*
     private void Awake()
     {
         if (!FB.IsInitialized)
@@ -62,7 +62,7 @@ public class FacebookScript : MonoBehaviour
         //FB.Mobile.AppInvite(new System.Uri("https://play.google.com/store/apps/details?id=com.tappybyte.byteaway"));
     }
     #endregion
-    
+
     //public void GetFriendsPlayingThisGame()
     //{
     //    string query = "/me/friends";
@@ -75,5 +75,5 @@ public class FacebookScript : MonoBehaviour
     //            FriendsText.text += ((Dictionary<string, object>)dict)["name"];
     //    });
     //}
+    */
 }
-*/
