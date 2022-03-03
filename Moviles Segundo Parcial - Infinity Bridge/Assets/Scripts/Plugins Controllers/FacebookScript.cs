@@ -1,15 +1,16 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-using Facebook.Unity;
 using UnityEngine.UI;
+
+//using Facebook.Unity;
 
 public class FacebookScript : MonoBehaviour
 {
     //public Text FriendsText;
-
-    /*
+    
     private void Awake()
     {
+        /*
         if (!FB.IsInitialized)
         {
             FB.Init(() =>
@@ -29,32 +30,33 @@ public class FacebookScript : MonoBehaviour
         }
         else
             FB.ActivateApp();
+        */
     }
 
     #region Login / Logout
     public void FacebookLogin()
     {
-        var permissions = new List<string>() { "public_profile", "email", "user_friends" };
-        FB.LogInWithReadPermissions(permissions);
+        //var permissions = new List<string>() { "public_profile", "email", "user_friends" };
+        //FB.LogInWithReadPermissions(permissions);
     }
 
     public void FacebookLogout()
     {
-        FB.LogOut();
+        //FB.LogOut();
     }
     #endregion
 
     public void FacebookShare()
     {
-        FB.ShareLink(new System.Uri("https://resocoder.com"), "Check it out!",
-            "Good programming tutorials lol!",
-            new System.Uri("https://resocoder.com/wp-content/uploads/2017/01/logoRound512.png"));
+        //FB.ShareLink(new System.Uri("https://resocoder.com"), "Check it out!",
+        //    "Good programming tutorials lol!",
+        //    new System.Uri("https://resocoder.com/wp-content/uploads/2017/01/logoRound512.png"));
     }
 
     #region Inviting
     public void FacebookGameRequest()
     {
-        FB.AppRequest("Hey! Come and play this awesome game!", title: "Reso Coder Tutorial");
+        //FB.AppRequest("Hey! Come and play this awesome game!", title: "Reso Coder Tutorial");
     }
 
     public void FacebookInvite()
@@ -75,5 +77,4 @@ public class FacebookScript : MonoBehaviour
     //            FriendsText.text += ((Dictionary<string, object>)dict)["name"];
     //    });
     //}
-    */
 }

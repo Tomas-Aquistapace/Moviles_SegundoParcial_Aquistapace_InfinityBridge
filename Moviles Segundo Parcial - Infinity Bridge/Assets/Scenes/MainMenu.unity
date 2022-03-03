@@ -1257,10 +1257,50 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 8862311239121528696, guid: f2882a5a6afd18740aec1caf690a77a2,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1254236002}
+    - target: {fileID: 8862311239121528696, guid: f2882a5a6afd18740aec1caf690a77a2,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: FacebookLogout
+      objectReference: {fileID: 0}
+    - target: {fileID: 8862311239378956660, guid: f2882a5a6afd18740aec1caf690a77a2,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1254236002}
+    - target: {fileID: 8862311239378956660, guid: f2882a5a6afd18740aec1caf690a77a2,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: FacebookGameRequest
+      objectReference: {fileID: 0}
     - target: {fileID: 8862311239554183788, guid: f2882a5a6afd18740aec1caf690a77a2,
         type: 3}
       propertyPath: m_Name
       value: A_Menu
+      objectReference: {fileID: 0}
+    - target: {fileID: 8862311239688724759, guid: f2882a5a6afd18740aec1caf690a77a2,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1254236002}
+    - target: {fileID: 8862311239688724759, guid: f2882a5a6afd18740aec1caf690a77a2,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: FacebookShare
+      objectReference: {fileID: 0}
+    - target: {fileID: 8862311240097188557, guid: f2882a5a6afd18740aec1caf690a77a2,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1254236002}
+    - target: {fileID: 8862311240097188557, guid: f2882a5a6afd18740aec1caf690a77a2,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: FacebookLogin
       objectReference: {fileID: 0}
     - target: {fileID: 8862311240194583856, guid: f2882a5a6afd18740aec1caf690a77a2,
         type: 3}

@@ -16,7 +16,7 @@ MonoBehaviour:
   clientTokens:
   - 
   appIds:
-  - 5096677620354743
+  - '5096677620354743 '
   appLabels:
   - Infinity Bridge
   cookie: 1
