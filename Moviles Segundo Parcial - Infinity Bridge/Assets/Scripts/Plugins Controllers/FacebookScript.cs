@@ -1,16 +1,18 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
-//using Facebook.Unity;
+using TMPro;
+using Facebook.Unity;
 
 public class FacebookScript : MonoBehaviour
 {
-    //public Text FriendsText;
-    
+    public TextMeshProUGUI PlayerFacebookName;
+
+    public string LoggedIn = "You are Connected!";
+    public string LoggedOut = "You are not Connected...";
+
     private void Awake()
     {
-        /*
         if (!FB.IsInitialized)
         {
             FB.Init(() =>
@@ -30,51 +32,49 @@ public class FacebookScript : MonoBehaviour
         }
         else
             FB.ActivateApp();
-        */
+    }
+
+    private void Update()
+    {
+        PlayerFacebookName.text = IsLogged();
     }
 
     #region Login / Logout
     public void FacebookLogin()
     {
-        //var permissions = new List<string>() { "public_profile", "email", "user_friends" };
-        //FB.LogInWithReadPermissions(permissions);
+        var permissions = new List<string>() { "public_profile", "email", "user_friends" };
+        FB.LogInWithReadPermissions(permissions);
     }
 
     public void FacebookLogout()
     {
-        //FB.LogOut();
+        FB.LogOut();
     }
     #endregion
 
     public void FacebookShare()
     {
-        //FB.ShareLink(new System.Uri("https://resocoder.com"), "Check it out!",
-        //    "Good programming tutorials lol!",
-        //    new System.Uri("https://resocoder.com/wp-content/uploads/2017/01/logoRound512.png"));
+        FB.ShareLink(new System.Uri("https://tomasaquistapace.itch.io/"), "Check it out!",
+            "Good programming tutorials lol!",
+            new System.Uri("https://user-images.githubusercontent.com/7604468/87527283-e4b9eb00-c659-11ea-8281-dc9d8377ce30.png"));
     }
 
     #region Inviting
     public void FacebookGameRequest()
     {
-        //FB.AppRequest("Hey! Come and play this awesome game!", title: "Reso Coder Tutorial");
-    }
-
-    public void FacebookInvite()
-    {
-        //FB.Mobile.AppInvite(new System.Uri("https://play.google.com/store/apps/details?id=com.tappybyte.byteaway"));
+        FB.AppRequest("Hey! Come and play this awesome game!", title: "Reso Coder Tutorial");
     }
     #endregion
 
-    //public void GetFriendsPlayingThisGame()
-    //{
-    //    string query = "/me/friends";
-    //    FB.API(query, HttpMethod.GET, result =>
-    //    {
-    //        var dictionary = (Dictionary<string, object>)Facebook.MiniJSON.Json.Deserialize(result.RawResult);
-    //        var friendsList = (List<object>)dictionary["data"];
-    //        FriendsText.text = string.Empty;
-    //        foreach (var dict in friendsList)
-    //            FriendsText.text += ((Dictionary<string, object>)dict)["name"];
-    //    });
-    //}
+    string IsLogged()
+    {
+        if (FB.IsLoggedIn)
+        {
+            return LoggedIn;
+        }
+        else
+        {
+            return LoggedOut;
+        }
+    }
 }
